@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pluto</title>
+  <link rel="stylesheet" href="../../../../../../css/documents.css">
+</head>
+
+<body class="body">
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Инструкция настройке 11 станции
+    </h2>
+  </div>
+  <p class="main__text descr-reset">
+    Очень часто на 11 станции возникает проблема, паллета с банкой останавливается на входе станции, и дальше ничего не
+    происходит.
+  </p>
+  <p class="main__text descr-reset">
+    Алгоритм действий в данной ситуации следующий:
+  </p>
+  <p class="main__text descr-reset">
+    1. Нужно убедиться что в алгоритмической схеме выполняются все условия для дальнейшего движения, для этого
+    подключаемся к мк-500
+  </p>
+  <div class="main__img">
+    <img src=".../../img/1.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    2. После подключения, заходим в дерево подключения, нажимаем вид-переменные тп, затем правой кнопкой мыши добавляем
+    переменную из списка, читаем программу, ищем алгоблок 8-МЛО, и смотрим чтобы на входе были все 1, если где то 0 то
+    ищем этот датчик, скорей всего просто разболтался из-за вибраций и не срабатывает
+  </p>
+  <div class="main__img">
+    <img src=".../../img/2.png" alt="img">
+  </div>
+  <div class="main__img">
+    <img src=".../../img/3.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    3. Если необходимые условия выполняются, то значит глюк контроллера, нужно почистить и обнулить его, для этого
+    заходим в программу «контраст», нажимаем на кнопку работа с зеленым индикатором,
+  </p>
+  <div class="main__img">
+    <img src=".../../img/4.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    4. Переходим в режим программирования, и проходим все тесты, обнуляем все
+  </p>
+
+  <p class="main__text descr-reset">
+    5. Также если не сработало можно переписать РПО, оно находится в следующей папке: D:\11станция\СТАНЦИЯ 11 РАБОЧАЯ НЕ
+    УДАЛЯТЬ\RPO 16_10_2019
+  </p>
+  <div class="main__img">
+    <img src=".../../img/5.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    6. В программе перепрошивки РПО выбираем нужные настройки и прошиваем оба модуля
+  </p>
+  <p class="main__text descr-reset">
+    <strong>Настройка COM-порта:</strong>
+    Нужно открыть программу «контраст», правой кнопкой мыши нажать на текущее соединение, затем сетевые параметры
+  </p>
+  <div class="main__img">
+    <img src=".../../img/6.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Чтобы узнать нужный COM-порт нужно зайти в поиск, и набрать там диспетчер устройств, зайти в папку COM-порты и найти
+    нужный нам порт, затем применить его в «контраст»
+  </p>
+  <div class="main__img">
+    <img src=".../../img/7.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    После вышеперечисленных действий разбираемся по ситуации
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cashe">
+	<title>Document</title>
+	<style>
+		body::-webkit-scrollbar {
+			width: 5px;
+			height: 5px;
+			/* ширина scrollbar */
+		}
+
+		body::-webkit-scrollbar-track {
+			background-color: #dfdcdc;
+			/* цвет дорожки */
+		}
+
+		body::-webkit-scrollbar-thumb {
+			background-color: green;
+			/* цвет плашки */
+			border-radius: 20px;
+			/* закругления плашки */
+		}
+
+		.tables {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.current-param {
+			margin-right: 15px;
+			background-color: #e7eef4;
+			box-shadow: 0 0 5px 1px black;
+
+
+			/* box-shadow: 2px 2px 10px rgb(0 0 0 / 20%); */
+
+			border-radius: 5px;
+		}
+
+		.current-param__title {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 10px;
+			margin-bottom: 0;
+			text-align: center;
+			font-size: 24px;
+			line-height: 30px;
+			font-weight: 700;
+			color: green;
+		}
+
+		.current-param__title-span {
+			font-size: 22px;
+			line-height: 30px;
+			font-weight: 600;
+			color: black;
+		}
+
+		.current-param__box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.current-param__date {
+			margin-right: 20px;
+			font-size: 22px;
+			line-height: 30px;
+			font-weight: 600;
+			color: black;
+		}
+
+		.current-param__time {
+			font-size: 22px;
+			line-height: 30px;
+			font-weight: 600;
+			color: black;
+
+		}
+
+		.table {
+			margin-top: 30px;
+			margin-right: 15px;
+			width: 430px;
+			text-align: left;
+			border-collapse: collapse;
+			border-spacing: 5px;
+			background-color: #e7eef4;
+			box-shadow: 0 0 5px 0 black;
+		}
+
+
+		.table__title {
+			margin-bottom: 10px;
+			text-align: center;
+			font-size: 20px;
+			line-height: 25px;
+			font-weight: 700;
+			color: green;
+		}
+
+		.table__tr {
+			height: 30px;
+			border: 1px solid black;
+		}
+
+		.table__th {
+			text-align: center;
+			font-size: 18px;
+			line-height: 18px;
+			font-weight: 800;
+			color: black;
+		}
+
+		.table__td {
+			letter-spacing: 1px;
+			text-align: center;
+			font-size: 16px;
+			line-height: 16px;
+			font-weight: 500;
+			color: black;
+		}
+
+		.table__left {
+			padding: 10px;
+			padding-left: 30px;
+			text-align: left;
+		}
+
+		.table__right {
+			color: green;
+			font-weight: 600;
+		}
+
+		.table__th:not(:last-child),
+		.table__td:not(:last-child) {
+			border-right: 1px solid black;
+		}
+	</style>
+</head>
+<#Refresh Content=60>
+
+	<body>
+		<div class="current-param">
+			<h1 class="current-param__title">
+				<span class="current-param__title-span">Угольное производство к.9а</span>
+				Печь кипящего слоя
+			</h1>
+			<div class="current-param__box">
+				<span class="current-param__date">
+					<#Date>
+				</span>
+				<span class="current-param__time">
+					<#Time>
+				</span>
+			</div>
+		</div>
+
+		<div class="tables">
+			<table class="table">
+				<caption class="table__title">Текущие параметры температуры
+				</caption>
+				<thead class="table__thead">
+					<tr class="table__tr">
+						<th class="table__th table__left">Наименование параметра</th>
+						<th class="table__th ">Значение &#176C</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table__tr">
+						<td class="table__td table__left">В топке</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=132 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">На входе печи</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=133 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 1-ой зоне</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=134 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Во 2-ой зоне</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=135 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 3-ей зоне</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=136 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 4-ой зоне</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=137 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 5-ой зоне</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=138 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Температура уходящих газов</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=139 Precision=1>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<caption class="table__title">Текущие параметры разрежения/расход
+				</caption>
+				<thead class="table__thead">
+					<tr class="table__tr">
+						<th class="table__th table__left">Наименование параметра</th>
+						<th class="table__th ">Значение</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table__tr">
+						<td class="table__td table__left">В топке печи, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=141 Precision=1>
+
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Газ на горелку, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=142 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 1-ой зоне, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=144 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Во 2-ой зоне, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=145 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 3-ей зоне, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=146 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 4-ой зоне, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=147 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">В 5-ой зоне, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=148 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Давление воздуха на горелку, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=140 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Расход газа на печь, м3/ч</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=149 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Расход воздуха на печь, м3/ч</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=150 Precision=1>
+						</td>
+					</tr>
+					<tr class="table__tr">
+						<td class="table__td table__left">Разряжение на выходе печи, кгс/м2</td>
+						<td class="table__td table__right">
+							<#PasspValue PasspType=1 PasspID=143 Precision=1>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</body>
+</html>
+

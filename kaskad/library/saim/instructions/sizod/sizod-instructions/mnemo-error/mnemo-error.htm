@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pluto</title>
+  <link rel="stylesheet" href="../../../../../../css/documents.css">
+</head>
+
+<body class="body">
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Инструкция по устранению ошибки мнемосхемы (ДОТ-ЭКО)
+    </h2>
+  </div>
+  <span class="main__text-span descr-reset">
+    Слетело ПО мнемосхемы
+  </span>
+  <p class="main__text descr-reset">
+    При запуске линии вышла ошибка на станции АРМ: </p>
+  <div class="main__img">
+    <img src=".../../img/1.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    В результате линия не запускалась, не работало никакое оборудование. </p>
+  <p class="main__text descr-reset">
+    Если нажать “Yes”, то выходило следующее сообщение: </p>
+  <div class="main__img">
+    <img src=".../../img/2.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Данная проблема возникала уже, и решалась лишь подключением шведов по TeamViewer. Они чинили какие то файлы в
+    операционной системе windows. Осталось понять какие именно файлы и как их реанимировать. </p>
+  <p class="main__text descr-reset">
+    На локальном диске D открываем папку Makoro и ищем в ней файлы log.log </p>
+  <p class="main__text descr-reset">
+    Переносим выделенные файлы в аналогичную папку на локальном диске С и заменяем их </p>
+  <div class="main__img">
+    <img src=".../../img/3.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Заходим в документы как показано на следующем скриншоте </p>
+  <div class="main__img">
+    <img src=".../../img/4.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Нас интересует файл t21c.exe. Именно с него происходит запуск мнемосхемы линии ДОТ ЭКО. Пробуем запустить его от
+    имени администратора. </p>
+  <p class="main__text descr-reset">
+    Если все получается, и мнемосхема начинает работать то создаем ярлык этого файла, копируем на рабочий стол, заменяем
+    и закидываем в автозагрузку. </p>
+  <div class="main__img">
+    <img src=".../../img/5.png" alt="img">
+  </div>
+</body>
+</html>

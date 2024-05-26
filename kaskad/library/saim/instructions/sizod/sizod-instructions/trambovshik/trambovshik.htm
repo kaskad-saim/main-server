@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pluto</title>
+  <link rel="stylesheet" href="../../../../../../css/documents.css">
+</head>
+
+<body class="body">
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Инструкция по настройке трамбовщика
+    </h2>
+  </div>
+  <p class="main__text descr-reset">
+    1. Входим в программу контроллера
+  </p>
+  <div class="main__img">
+    <img src=".../../img/1.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    2. Изменяем SoftLSN (верхний концевик) c -100 на -20000, если нужно настроить нижний концевик, то увеличиваем
+    SoftLSР
+  </p>
+  <p class="main__text descr-reset">
+    3. Сохраняем и записываем программу в контроллер
+  </p>
+  <p class="main__text descr-reset">
+    4. На панели оператора возле трамбовщика уводим каретку в минус до верхнего положения, когда она его достигнет,
+    возникнет ошибка, и табло станет красным, если значение меняется, а каретка не поднимается, значит, присутствует
+    механическая поломка, а именно прокручивается вал двигателя в муфте.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/2.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    5. Разрываем последнюю цепочку, установив False, и в ней обнуляем значение. Нажатием на CrrentPosition в этой
+    цепочке.
+  </p>
+  <p class="main__text descr-reset">
+    6. После этого возвращаем программу в исходное положение, удалив False и положение концевика на -100. И записываем
+    программу в контроллер.
+  </p>
+  <p class="main__text descr-reset">
+    7. Перезагружаем всю линию и запускаемся.
+  </p>
+
+</body>
+
+</html>

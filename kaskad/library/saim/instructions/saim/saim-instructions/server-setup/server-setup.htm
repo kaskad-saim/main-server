@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pluto</title>
+  <link rel="stylesheet" href="../../../../../../css/documents.css">
+</head>
+
+<body class="body">
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Инструкция по установке ПО для SKADA системы на сервер
+    </h2>
+  </div>
+  <p class="main__text descr-reset">
+    1. Для начала устанавливаем Nport administrator.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/1.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    2. Устанавливаем ПО Insat OPC server, ключ пока не вставляем (номер ключа должен соответствовать диску).
+  </p>
+  <p class="main__text descr-reset">3. Затем нужно установить драйвер ключа, для этого нужно изменить групповую политику
+    безопасности как на рисунке ниже и перезагрузить ПК.</p>
+  <div class="main__img">
+    <img src=".../../img/2.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    4. После этого проверяем в диспетчере устройств, должно быть так:
+  </p>
+  <div class="main__img">
+    <img src=".../../img/3.png" alt="img">
+  </div>
+  <p class="main__text descr-reset"> 5. Далее устанавливаем пакеты из папки диск-каскад: Kaskad, драйвер ключа не ставим
+    т.к. он уже есть.
+  </p>
+  <p class="main__text descr-reset">
+    6. Нужно поставить дополнительный пакет для связи с OPC сервером, можно скачать OPC сервер с сайта kaskad и
+    установить. </p>
+  <div class="main__img">
+    <img src=".../../img/4.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    7. Затем удаляем OPC сервер и оставляем OPC core components как показано на рисунке ниже. </p>
+  <div class="main__img">
+    <img src=".../../img/5.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    8. Затем нужно перекинуть файлы модуля истории в корневую директорию Kaskad. </p>
+  <div class="main__img">
+    <img src=".../../img/6.png" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Не забываем вставить ключ Kaskad и можно работать, при автосоздании тегов должна появиться связь с сервером OPC.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/7.png" alt="img">
+  </div>
+</body>
+
+</html>
