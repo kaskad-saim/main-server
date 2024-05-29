@@ -429,6 +429,7 @@ a {
 }
 
 .page-sidebar__title {
+  font-family: 'Bitter', sans-serif;
   font-size: 20px;
   line-height: 20px;
   font-weight: 600;
@@ -443,6 +444,7 @@ a {
 
 .page-sidebar__span {
   margin-bottom: 10px;
+  font-family: 'Bitter', sans-serif;
   font-size: 18px;
   line-height: 18px;
   color: rgb(100, 99, 99);
@@ -452,6 +454,7 @@ a {
 .page-sidebar__link {
   padding-bottom: 5px;
   margin-bottom: 5px;
+  font-family: 'Bitter', sans-serif;
   font-size: 14px;
   line-height: 14px;
   color: green;
@@ -890,7 +893,7 @@ body::-webkit-scrollbar-thumb {
   line-height: 14px;
   font-weight: 700;
   color: black;
-  font-family: 'Gilroy', sans-serif;
+  font-family: 'Bitter', sans-serif;
   background-color: white;
   border-radius: 5px;
   border: 1px solid green;
@@ -933,7 +936,7 @@ body::-webkit-scrollbar-thumb {
   line-height: 16px;
   font-weight: 400;
   color: #FFFFFF;
-  font-family: 'Gilroy', sans-serif;
+  font-family: 'Bitter', sans-serif;
 }
 
 .help__tooltip-text-span {
@@ -941,6 +944,7 @@ body::-webkit-scrollbar-thumb {
   line-height: 20px;
   font-weight: 700;
   color: #FFFFFF;
+  font-family: 'Bitter', sans-serif;
 }
 
 .help__tooltip-link {
