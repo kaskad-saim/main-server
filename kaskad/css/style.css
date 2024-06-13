@@ -1013,11 +1013,11 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
-.page-content__link:focus::before {
+.page-content__link:focus-visible::before {
   width: 100%;
 }
 
-.page-content__link:focus {
+.page-content__link:focus-visible {
   outline: none;
 }
 
@@ -1048,7 +1048,7 @@ body::-webkit-scrollbar-thumb {
   color: white;
 }
 
-.page-content__link-download:focus {
+.page-content__link-download:focus-visible {
   background-color: var(--hulk);
   color: white;
 }
@@ -1062,9 +1062,114 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* video */
-.page-content__video-item {
-  width: 400px;
+
+.page-content__videos {
+  display: flex;
+  flex-direction: column;
 }
+
+.page-content__video {
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.page-content__video:not(:first-child) {
+  margin-top: 30px;
+}
+
+/* modal-video */
+.page-content__video-modals {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.page-content__video-modals--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.page-content__video-modal {
+  background-color: white;
+  border-radius: 7px;
+  margin: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.page-content__video-modal--visible {
+  display: block;
+}
+
+.page-content__video-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-content__video-item {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 7px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
+}
+
+.page-content__video-content-title {
+  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--hulk);
+  font-weight: 600;
+}
+
+.page-content__video-btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.page-content__video-btn-close-svg {
+  width: 30px;
+  height: 30px;
+}
+
+.page-content__video-btn-close:hover {
+  opacity: 0.5;
+}
+
+.page-content__video-btn-close:active {
+  opacity: 0.5;
+}
+
+.page-content__video-btn-close:focus-visible {
+  opacity: 0.5;
+  outline: none;
+}
+
+
+
 
 
 @media (max-width: 2800px) {

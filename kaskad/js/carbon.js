@@ -205,6 +205,28 @@ if (pechVr2DavlParBaraban) {
 }
 
 //pechiMpa
+const pechMpa2T = document.querySelector('.pechmpa-2-t-js');
+const pechMpa2TPath = 'http://Techsite4/kaskad/graphics/pechMPA2/';
+const pechMpa2TPathName = '_PechMPA2_T.jpg';
+
+if (pechMpa2T) {
+  pechMpa2T.addEventListener('click', (e) => {
+    e.preventDefault();
+    graphicFunc(pechMpa2TPath, pechMpa2TPathName);
+  });
+}
+
+const pechMpa2P = document.querySelector('.pechmpa-2-p-js');
+const pechMpa2PPath = 'http://Techsite4/kaskad/graphics/pechMPA2/';
+const pechMpa2PPathName = '_PechMPA2_P.jpg';
+
+if (pechMpa2P) {
+  pechMpa2P.addEventListener('click', (e) => {
+    e.preventDefault();
+    graphicFunc(pechMpa2PPath, pechMpa2PPathName);
+  });
+}
+
 const pechMpa3T = document.querySelector('.pechmpa-3-t-js');
 const pechMpa3TPath = 'http://Techsite4/kaskad/graphics/pechMPA3/';
 const pechMpa3TPathName = '_PechMPA3_T.jpg';
