@@ -1173,12 +1173,12 @@ body::-webkit-scrollbar-thumb {
 
 
 /* preloader */
-/* .spinner {
+.spinner {
   width: 80px;
   height: 80px;
 
-  border: 2px solid #f3f3f3;
-  border-top: 3px solid #f25a41;
+  border: 2px solid white;
+  border-top: 3px solid green;
   border-radius: 100%;
 
   position: absolute;
@@ -1202,15 +1202,21 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-#overlay {
+.overlay {
+  display: none;
   height: 10%;
   width: 10%;
-  background: white;
+  background-color: transparent;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
   z-index: 1;
-} */
+}
+
+.overlay.active {
+  display: block;
+}
+
 
 
 @media (max-width: 2800px) {
