@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pluto</title>
+  <link rel="stylesheet" href="../../../../../../css/documents.css">
+</head>
+
+<body class="body">
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Технологическая карта ДОТ ЭКО
+    </h2>
+  </div>
+  <span class="main__text-span descr-reset">
+    Настройка 0-го положения манипулятора.
+  </span>
+  <p class="main__text descr-reset">
+    Ситуация, когда манипулятор остановился на какой-то точке траектории по оси Y, на мнемосхеме показана ошибка «Ошибка
+    сервопривода всего манипулятора», на вкладке манипулятор сбоку в правом верхнем углу стоит значение 0,0 и горит
+    красным цветом
+  </p>
+  <p class="main__text descr-reset">
+    У нас есть видео, в котором показано как Шведский специалист удаленно настраивал координаты. Наша задача привести
+    нашу ситуацию и ситуацию в видео к одинаковым условиям.
+  </p>
+  <p class="main__text descr-reset">
+    В ситуации на видео манипулятор стоит в начальной точке траектории, а именно 14,5, а показывает 0,0, т.е. задача
+    шведского специалиста задать на манипуляторе 14,5.
+  </p>
+
+  <p class="main__text descr-reset">
+    В нашей ситуации к примеру манипулятор потерял координаты в конце траектории, и показывает 0,0, значит надо его
+    передвинуть на 14,5, а потом делать все по инструкции на видео.
+  </p>
+
+  <p class="main__text descr-reset">
+    Каким образом этого добиться?
+  </p>
+
+  <p class="main__text descr-reset">
+    Открываем программу GX Developer 7.04, настраиваем связь с контроллером, подключаемся, включаем режим монитора.
+  </p>
+
+  <p class="main__text descr-reset">
+    Нам нужно сдвинуть манипулятор до начальной точки (14,5). Для этого нужно сдвинуть его на максимум в противоположную
+    сторону, до нулевого положения, а затем сдвинуть в обратную сторону на 14,5.
+  </p>
+
+  <div class="main__img">
+    <img src="img/1.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 1 – области в древе проекта, с которыми мы будем работать
+  </p>
+  <p class="main__text descr-reset">
+    У нас на линии находится 2 сервопривода, где настраиваются координаты, они стоят в переднем шкафу:
+  </p>
+  <p class="main__text descr-reset">
+    1. PnP_ServoControl[PRG] – манипулятор
+    2. St04_ServoControl[PRG] – трамбовщик
+  </p>
+  <div class="main__img">
+    <img src="img/2.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 2 – поиск переменной bMotorsOn_St04
+  </p>
+  <p class="main__text descr-reset">
+    Находим переменную bMotorsOn_St04, нужно убедиться, что все приводы горят желтым цветом, для этого нужно нажать на
+    панели оператора reset, а затем start.
+  </p>
+  <div class="main__img">
+    <img src="img/3.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 3 – включенные приводы
+  </p>
+  <p class="main__text descr-reset">
+    Затем нужно спуститься вниз программы до блока QD74MH_ControlAx2, ServoOn должен быть активирован и гореть желтым
+    цветом.
+  </p>
+  <div class="main__img">
+    <img src="img/4.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 4 - блок QD74MH_ControlAx2 после включения приводов
+  </p>
+  <p class="main__text descr-reset">
+    Рисуем с помощью инструментов FALSE в цепочке, затем записываем изменение в ПЛК клавишами Shift+Ctrl+D.
+  </p>
+  <div class="main__img">
+    <img src="img/5.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 5 – StartHome
+  </p>
+  <div class="main__img">
+    <img src="img/6.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 6 – концевики
+  </p>
+  <p class="main__text descr-reset">
+    SoftLSP и SoftLSN – концевики, диапазон в котором передвигается манипулятор, нужно поставить -200050 и 200050.
+  </p>
+  <p class="main__text descr-reset">
+    Ставим еще один FALSE и записываем изменения в программу.
+  </p>
+  <div class="main__img">
+    <img src="img/7.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 7 – startHome
+  </p>
+  <p class="main__text descr-reset">
+    Поднимаемся выше, рисуем цепочку с переменной bDummy_start, сохраняем изменения в ПЛК.
+  </p>
+  <div class="main__img">
+    <img src="img/8.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 8 – bDummy_start
+  </p>
+  <p class="main__text descr-reset">
+    Находим переменную iPnP_Y_Aut_Pos, и подбираем значение, затем записываем изменения в ПЛК.
+  </p>
+  <div class="main__img">
+    <img src="img/9.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 9 – iPnP_Y_Aut_Pos
+  </p>
+  <div class="main__img">
+    <img src="img/10.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 10 – iPnP_Y_Aut_Pos
+  </p>
+  <p class="main__text descr-reset">
+    Если после записи в ПЛК манипулятор не сдвигается с места то пробуем запустить его различными вариантами, а именно
+    нажатием следующих переменных.
+  </p>
+  <div class="main__img">
+    <img src="img/11.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 11 – startHome
+  </p>
+  <div class="main__img">
+    <img src="img/12.jpg" alt="img">
+  </div>
+  <p class="img-tooltip descr-reset">
+    Рисунок 12 – start_Man
+  </p>
+  <p class="main__text descr-reset">
+    Если ничего из этого не помогает, то перезаписываем общую программу в ПЛК.
+  </p>
+</body>
+
+</html>
