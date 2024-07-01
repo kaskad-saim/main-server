@@ -1177,10 +1177,9 @@ body::-webkit-scrollbar-thumb {
   width: 80px;
   height: 80px;
 
-  border: 2px solid white;
+  border: 5px solid white;
   border-top: 3px solid green;
   border-radius: 100%;
-
   position: absolute;
   top: 0;
   bottom: 0;
