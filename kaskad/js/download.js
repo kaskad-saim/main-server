@@ -18,7 +18,9 @@ iframeMenu.onload = () => {
 };
 
 iframeData.onload = () => {
-  iframeData.style.backgroundColor = '';
-  iframeData.style.visibility = 'visible';
-  spiner.classList.remove('active');
+  setTimeout(() => {
+    iframeData.style.backgroundColor = '';
+    iframeData.style.visibility = 'visible';
+    spiner.classList.remove('active');
+  }, 1500);
 };
