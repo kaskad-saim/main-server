@@ -22,5 +22,5 @@ iframeData.onload = () => {
     iframeData.style.backgroundColor = '';
     iframeData.style.visibility = 'visible';
     spiner.classList.remove('active');
-  }, 1500);
+  }, 1700);
 };
