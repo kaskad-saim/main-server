@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="cache-control" content="no-cashe" />
+  <link rel="stylesheet" href="../../../../../../css/documents.css" />
+  <title>Document</title>
+</head>
+
+<body class="body">
+
+  <div class="main__header-container">
+    <a class="instructions-btn" href="javascript:history.back()">
+      Назад
+    </a>
+    <h2 class="main__header title-reset">
+      Инструкция по флагам регистрации в PLUTO
+    </h2>
+  </div>
+  <p class="main__text descr-reset">
+    На линии ДОТ ЭКО в контроллере безопасности «PLUTO» реализована функция регистрации флагов сработавших сигналов
+    безопасности. Иными словами, можно посмотреть какой из сигналов безопасности приводит к срабатыванию защиты и
+    отключению станции.
+  </p>
+  <p class="main__text descr-reset">
+    В Pluto manager откройте проект загруженный в контроллер.
+  </p>
+  <p class="main__text descr-reset">
+    Разверните древо объектов с контроллером pluto.
+  </p>
+  <p class="main__text descr-reset">
+    Выберите Plc Code (код программы ПЛК).
+  </p>
+  <div class="main__img">
+    <img src=".../../img/1.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    В контроллере Pluto задействованы 2 основные схемы блокировок.
+  </p>
+  <p class="main__text descr-reset">
+    Схема ниже является основной блокировкой безопасности, ее работа заключается в формировании сигнала на отключение
+    станции при отключении хотя бы одного блокировочного сигнала безопасности от датчиков и блокировочных контактов,
+    результатом работы схемы является отключение станции и индикация синей лампы в кнопке «Reset Emergency Stop» на
+    лицевой панели. В схему добавлен таймер задержки отключения для игнорирования схемой ложных исчезновений сигналов,
+    длящихся менее 0.5 сек.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/2.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Для возможности регистрации сигналов, приводящих к срабатыванию защиты, в программе ниже, добавлены флаги отключения
+    сигналов этой схемы в разделе «Alarm_flag_emergency», позволяющие увидеть какой из элементов цепи вызвал остановку
+    станции.
+  </p>
+  <p class="main__text descr-reset">
+    При исчезновении сигнала происходит его регистрация по заднему фронту (символ N в контакте) и запись этого события в
+    соответствующую ячейку памяти (символ S в ячейке).
+  </p>
+  <p class="main__text descr-reset">
+    Информация в памяти хранится до сброса, который осуществляется нажатием синей кнопки сброс «Reset Emergency Stop» на
+    лицевой панели.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/3.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Схема ниже является второй основной блокировочной схемой и контролирует входы с датчиков открытия дверей, она
+    работает аналогично первой схеме и так же, как и в первом случае, ниже нее располагаются флаги регистрации ее
+    сигналов в разделе «Alarm_flag_emergency 2».
+  </p>
+  <p class="main__text descr-reset">
+    Результатом работы схемы является блокировка работы станции и индикация желтой лампы в кнопке «Reset safety stop» на
+    лицевой панели, этой же кнопкой осуществляется сброс регистрирующих флагов этой схемы.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/4.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Пример:
+  </p>
+  <p class="main__text descr-reset">
+    Нажмите кнопку Online для подключения к контроллеру в режиме мониторинга, на схеме станут отражены сигналы в режиме
+    реального времени.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/5.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Включенные контакты, как и сигналы отображены красными линиями на схеме.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/6.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    На схеме выше видно, что был записан сигнал в ячейку памяти М0.116, значит происходило отключение или исчезновение
+    сигнала от М0.16, посмотрев в программе какой сигнал записывается в М0.16 (схема ниже), можно понять, что была
+    нажата аварийная кнопка ASi020 или было исчезновение сигнала этой кнопки.
+  </p>
+  <div class="main__img">
+    <img src=".../../img/7.jpg" alt="img">
+  </div>
+  <p class="main__text descr-reset">
+    Описание переменных находится во вкладке «Variables»
+  </p>
+  <div class="main__img">
+    <img src=".../../img/8.jpg" alt="img">
+  </div>
+
+</body>
+
+
+</html>
