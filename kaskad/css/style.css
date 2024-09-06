@@ -1282,6 +1282,11 @@ body::-webkit-scrollbar-thumb {
 
 
 
+/* graph */
+.graph {
+  
+}
+
 @media (max-width: 2800px) {
   .intro-container {
     max-width: 2800px;
