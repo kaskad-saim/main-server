@@ -58,12 +58,10 @@ const fetchData = async () => {
 
     if (parametersVr1.length > 0) {
       await PechVr1.insertMany(parametersVr1);
-      console.log('Данные для PechVr1 успешно сохранены');
     }
 
     if (parametersVr2.length > 0) {
       await PechVr2.insertMany(parametersVr2);
-      console.log('Данные для PechVr2 успешно сохранены');
     }
   } catch (error) {
     console.error('Ошибка при извлечении данных:', error);

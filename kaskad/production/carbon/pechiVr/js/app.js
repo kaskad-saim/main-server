@@ -23,6 +23,14 @@ async function createChart() {
   const temperVTopke = [];
   const temperVVerhuKameri = [];
   const temperVNizuKameri = [];
+  const temperNaVhodePechiDozhiga = [];
+  const temperNaVykhodePechiDozhiga = [];
+  const temperKameraVygruzki = [];
+  const temperDymovykhGazovKotl = [];
+  const temperGazovDoSkrubber = [];
+  const temperGazovPosleSkrubber = [];
+  const temperVodyVanneSkrubber = [];
+  const temperGranulPosleKholod = [];
 
   const labels = [];
 
@@ -40,6 +48,22 @@ async function createChart() {
       temperVVerhuKameri.push(item.value);
     } else if (item.name === 'Внизу камеры загрузки') {
       temperVNizuKameri.push(item.value);
+    } else if (item.name === 'На входе печи дожига') {
+      temperNaVhodePechiDozhiga.push(item.value);
+    } else if (item.name === 'На выходе печи дожига') {
+      temperNaVykhodePechiDozhiga.push(item.value);
+    } else if (item.name === 'Камера выгрузки') {
+      temperKameraVygruzki.push(item.value);
+    } else if (item.name === 'Температура дымовых газов котла-утилизатора') {
+      temperDymovykhGazovKotl.push(item.value);
+    } else if (item.name === 'Температура газов до скруббера') {
+      temperGazovDoSkrubber.push(item.value);
+    } else if (item.name === 'Температура газов после скруббера') {
+      temperGazovPosleSkrubber.push(item.value);
+    } else if (item.name === 'Температура воды в ванне скруббера') {
+      temperVodyVanneSkrubber.push(item.value);
+    } else if (item.name === 'Температура гранул после холод-ка') {
+      temperGranulPosleKholod.push(item.value);
     }
   });
 
@@ -84,6 +108,54 @@ async function createChart() {
           label: 'Внизу камеры загрузки',
           data: temperVNizuKameri,
           borderColor: 'rgba(255, 159, 64, 1)',
+          fill: false,
+        },
+        {
+          label: 'На входе печи дожига',
+          data: temperNaVhodePechiDozhiga,
+          borderColor: 'rgba(255, 206, 86, 1)',
+          fill: false,
+        },
+        {
+          label: 'На выходе печи дожига',
+          data: temperNaVykhodePechiDozhiga,
+          borderColor: 'rgba(75, 192, 192, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Камера выгрузки',
+          data: temperKameraVygruzki,
+          borderColor: 'rgba(255, 99, 132, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Температура дымовых газов котла-утилизатора',
+          data: temperDymovykhGazovKotl,
+          borderColor: 'rgba(54, 162, 235, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Температура газов до скруббера',
+          data: temperGazovDoSkrubber,
+          borderColor: 'rgba(153, 102, 255, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Температура газов после скруббера',
+          data: temperGazovPosleSkrubber,
+          borderColor: 'rgba(255, 159, 64, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Температура воды в ванне скруббера',
+          data: temperVodyVanneSkrubber,
+          borderColor: 'rgba(255, 206, 86, 0.5)',
+          fill: false,
+        },
+        {
+          label: 'Температура гранул после холод-ка',
+          data: temperGranulPosleKholod,
+          borderColor: 'rgba(75, 192, 192, 0.3)',
           fill: false,
         },
       ],

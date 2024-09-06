@@ -429,6 +429,7 @@ a {
 }
 
 .page-sidebar__title {
+  margin-bottom: 10px;
   font-family: 'Bitter', sans-serif;
   font-size: 20px;
   line-height: 20px;
@@ -436,8 +437,12 @@ a {
   color: black;
 }
 
+.page-sidebar__title:not(:first-child) {
+  margin-top: 10px;
+}
+
 .page-sidebar__box {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   display: flex;
   flex-direction: column;
 }
@@ -485,18 +490,17 @@ a {
 }
 
 .calendar {
-  margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .table-header,
 .page-sidebar__box-header {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: start;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 18px;
   color: black;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .page-sidebar__link-content {
@@ -1283,9 +1287,56 @@ body::-webkit-scrollbar-thumb {
 
 
 /* graph */
-.graph {
-  
+.dynamic-graph {
+  margin: 5px 30px;
+  display: flex;
+  flex-direction: column;
 }
+
+.dynamic-graph__title {
+  margin-bottom: 15px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  color: green;
+}
+
+.dynamic-graph__graph {
+  max-height: 600px;
+}
+
+.dynamic-graph__btns {
+  margin-top: 20px;
+  display: flex;
+}
+
+.dynamic-graph__btn {
+  margin-right: 10px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: green;
+  border: 1px solid green;
+  background-color: transparent;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.dynamic-graph__btn:hover {
+  color: white;
+  background-color: green;
+}
+
+.dynamic-graph__btn:active {
+  color: white;
+  background-color: green;
+}
+
+.dynamic-graph__btn:focus-visible {
+  color: white;
+  background-color: green;
+  outline: none;
+}
+
 
 @media (max-width: 2800px) {
   .intro-container {
