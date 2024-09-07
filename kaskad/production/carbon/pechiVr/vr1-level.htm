@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+  <div class="dynamic-graph">
+    <h1 class="dynamic-graph__title title-reset">График уровня печи карбонизации №1</h1>
+    <div class="dynamic-graph__content">
+      <canvas class="dynamic-graph__graph" id="levelChart"></canvas>
+      <div class="dynamic-graph__btns">
+        <button class="dynamic-graph__btn" id="prevBtn">Назад</button>
+        <button class="dynamic-graph__btn" id="nextBtn">Вперед</button>
+        <button class="dynamic-graph__btn" id="resetBtn">Сброс</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="js/library/chart.js"></script>
+  <script src="js/library/chart-annotation.js"></script>
+  <script src="js/library/chart-zoom.js"></script>
+  <script src="js/library/moment.js"></script>
+  <script src="js/library/chart-moment.js"></script>
+  <script src="js/appLevel.js"></script>
+</body>
+
+</html>

@@ -43,15 +43,11 @@ const fetchData = async () => {
         const value = parseFloat(valueText.replace(',', '.')); // Изменено для извлечения числового значения
 
         if (name && !isNaN(value)) {
-          const currentTime = new Date().toLocaleString(); // Получаем текущее время в читаемом формате
-
           if (classList.includes('vr1')) {
             parametersVr1.push({ name, value });
           } else if (classList.includes('vr2')) {
             parametersVr2.push({ name, value });
           }
-
-          // console.log(`${currentTime}: ${name} - ${value} `);
         }
       }
     });
