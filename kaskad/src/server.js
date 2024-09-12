@@ -64,14 +64,19 @@ const fetchData = async () => {
   }
 };
 
-// Запуск функции fetchData каждые 10 секунд
-setInterval(fetchData, 30000);
+// Запуск функции fetchData каждые 60 секунд
+setInterval(fetchData, 60000);
 
 // Новый маршрут для получения данных
 app.get('/api/parameters', async (req, res) => {
   try {
-    const dataVr1 = await PechVr1.find().sort({ timestamp: 1 });
-    const dataVr2 = await PechVr2.find().sort({ timestamp: 1 });
+    // Получаем текущую дату и вычитаем 24 часа
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+    // Находим данные, созданные за последние 24 часа
+    const dataVr1 = await PechVr1.find({ timestamp: { $gte: twentyFourHoursAgo } }).sort({ timestamp: 1 });
+    const dataVr2 = await PechVr2.find({ timestamp: { $gte: twentyFourHoursAgo } }).sort({ timestamp: 1 });
+
     res.json({ vr1: dataVr1, vr2: dataVr2 });
   } catch (error) {
     res.status(500).json({ message: 'Ошибка получения данных' });

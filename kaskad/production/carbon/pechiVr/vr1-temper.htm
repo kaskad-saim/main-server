@@ -12,15 +12,19 @@
 <body>
 
   <div class="dynamic-graph">
-    <h1 class="dynamic-graph__title title-reset" >График температуры печи карбонизации №1</h1>
+    <h1 class="dynamic-graph__title title-reset">График температуры печи карбонизации №1</h1>
     <div class="dynamic-graph__content">
-      <canvas class="dynamic-graph__graph" id="temperatureChart"></canvas>
-      <div class="dynamic-graph__btns">
-        <button class="dynamic-graph__btn" id="prevBtn">Назад</button>
-        <button class="dynamic-graph__btn" id="nextBtn">Вперед</button>
-        <button class="dynamic-graph__btn" id="resetBtn">Сброс</button>
-      </div>
-
+      <!-- <div id="loadingWrapper">
+        <div id="loadingText">Загрузка графика, пожалуйста подождите...</div>
+        <div id="loadingBar"></div>
+      </div> -->
+      <canvas class="dynamic-graph__graph" id="temperatureChart"></сanvas>
+    </div>
+    <div class="dynamic-graph__btns">
+      <button class="dynamic-graph__btn" id="prevBtn">Назад</button>
+      <button class="dynamic-graph__btn" id="nextBtn">Вперед</button>
+      <button class="dynamic-graph__btn" id="resetBtn">Сброс</button>
+      <button class="dynamic-graph__btn" id="toggleDataBtn">Отключить отображение</button>
     </div>
   </div>
 
@@ -29,7 +33,7 @@
   <script src="js/library/chart-zoom.js"></script>
   <script src="js/library/moment.js"></script>
   <script src="js/library/chart-moment.js"></script>
-  <script src="js/app.js"></script>
+  <script type="module" src="js/test.js"></script>
 </body>
 
 </html>
