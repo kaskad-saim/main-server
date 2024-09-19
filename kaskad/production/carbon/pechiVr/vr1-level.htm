@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>График уровня</title>
   <link rel="stylesheet" href="../../../css/style.css">
 </head>
 
 <body>
-
   <div class="dynamic-graph">
-    <h1 class="dynamic-graph__title title-reset">График уровня печи карбонизации №1</h1>
-    <div class="dynamic-graph__content">
-      <canvas class="dynamic-graph__graph" id="levelChart"></canvas>
-      <div class="dynamic-graph__btns">
-        <button class="dynamic-graph__btn" id="prevBtn">Назад</button>
-        <button class="dynamic-graph__btn" id="nextBtn">Вперед</button>
-        <button class="dynamic-graph__btn" id="resetBtn">Сброс</button>
+    <h1 class="dynamic-graph__title title-reset" id="graphTitle">График уровня печи карбонизации №1</h1>
 
+    <!-- Прелоудер -->
+    <div id="loadingWrapper">
+      <div id="loadingText">Загрузка данных, пожалуйста подождите...</div>
+      <div id="loadingBar"></div>
+    </div>
+
+    <!-- Секция для выбора даты (для архивного графика) -->
+    <div class="dynamic-graph__date-range">
+      <label class="dynamic-graph__date-label" for="singleDate">Выберите дату для просмотра архива:</label>
+      <div class="dynamic-graph__date-div">
+        <input class="dynamic-graph__date-input" type="date" id="singleDate">
+        <button class="dynamic-graph__btn" id="confirmDateBtn">Принять</button>
       </div>
+    </div>
 
+    <div class="dynamic-graph__content">
+      <!-- Блок для сообщения о том, что данных нет -->
+      <div class="dynvamic-graph__data-error" id="noDataMessage">
+        Данные за выбранную дату отсутствуют.
+      </div>
+      <!-- График -->
+      <canvas class="dynamic-graph__graph" id="chartCanvas"></canvas>
+    </div>
+
+    <div class="dynamic-graph__btns">
+      <button class="dynamic-graph__btn" id="resetBtn">Вернутся к текущим значениям</button>
+      <button class="dynamic-graph__btn" id="toggleDataBtn">Скрыть данные</button>
     </div>
   </div>
 
-
+  <!-- Подключаем библиотеки -->
   <script src="js/library/chart.js"></script>
-  <script src="js/library/chart-annotation.js"></script>
   <script src="js/library/chart-zoom.js"></script>
   <script src="js/library/moment.js"></script>
   <script src="js/library/chart-moment.js"></script>
-  <script src="js/appLevel.js"></script>
+
+  <!-- Подключаем основной скрипт -->
+  <script type="module" src="js/levelVr1.js"></script>
 </body>
 
 </html>

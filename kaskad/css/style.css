@@ -1397,6 +1397,66 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.dynamic-graph__date-range {
+  position: relative;
+  max-width: 350px;
+}
+
+.dynamic-graph__date-div {
+  margin-bottom: 10px;
+}
+
+
+.dynamic-graph__date-label {
+  margin-bottom: 10px;
+}
+
+.dynamic-graph__date-input {
+  width: 150px;
+  text-align: center;
+  font-family: 'Bitter', sans-serif;
+  padding: 2px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+}
+
+/* Стиль при наведении */
+.dynamic-graph__date-input:hover {
+  border-color: #777;
+  background-color: #f0f0f0;
+}
+
+/* Стиль при фокусе (когда элемент активен) */
+.dynamic-graph__date-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Стили для отключенного состояния (disabled) */
+.dynamic-graph__date-input:disabled {
+  background-color: #e0e0e0;
+  color: #999;
+  border-color: #dcdcdc;
+}
+
+/* Пример с кастомной иконкой внутри инпута (не для всех браузеров) */
+.dynamic-graph__date-input::-webkit-calendar-picker-indicator {
+  color: #3498db;
+  cursor: pointer;
+}
+
+.dynvamic-graph__data-error {
+  display: none;
+  color: red;
+  text-align: center;
+  font-size: 24px;
+}
 
 
 @media (max-width: 2800px) {

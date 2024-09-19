@@ -10,11 +10,11 @@ const PORT = 3000;
 // Подключение к MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/carbon');
 
-// Создание схемы и модели для хранения данных
+// Создание схемы и модели для хранения данных с TTL индексом
 const parameterSchema = new mongoose.Schema({
   name: String,
   value: Number,
-  timestamp: { type: Date, default: Date.now },
+  timestamp: { type: Date, default: Date.now, expires: '100d' }, // Данные удаляются через 100 дней
 });
 
 const PechVr1 = mongoose.model('PechVr1', parameterSchema);
@@ -40,7 +40,7 @@ const fetchData = async () => {
       const classList = $(element).find('td.table__td--object.table__right').attr('class');
 
       if (valueText) {
-        const value = parseFloat(valueText.replace(',', '.')); // Изменено для извлечения числового значения
+        const value = parseFloat(valueText.replace(',', '.')); // Извлечение числового значения
 
         if (name && !isNaN(value)) {
           if (classList.includes('vr1')) {
@@ -67,19 +67,33 @@ const fetchData = async () => {
 // Запуск функции fetchData каждые 60 секунд
 setInterval(fetchData, 60000);
 
-// Новый маршрут для получения данных
-app.get('/api/parameters', async (req, res) => {
+// server.js
+
+app.get('/api/parameters/:parameterType', async (req, res) => {
   try {
-    // Получаем текущую дату и вычитаем 24 часа
-    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const { start, end } = req.query;
+    const { parameterType } = req.params;
 
-    // Находим данные, созданные за последние 24 часа
-    const dataVr1 = await PechVr1.find({ timestamp: { $gte: twentyFourHoursAgo } }).sort({ timestamp: 1 });
-    const dataVr2 = await PechVr2.find({ timestamp: { $gte: twentyFourHoursAgo } }).sort({ timestamp: 1 });
+    const endDate = end ? new Date(end) : new Date();
+    const startDate = start ? new Date(start) : new Date(Date.now() - 24 * 60 * 60 * 1000);
 
-    res.json({ vr1: dataVr1, vr2: dataVr2 });
+    if (isNaN(startDate) || isNaN(endDate)) {
+      return res.status(400).json({ message: 'Неверный формат дат' });
+    }
+
+    let data;
+    if (parameterType === 'vr1') {
+      data = await PechVr1.find({ timestamp: { $gte: startDate, $lte: endDate } }).sort({ timestamp: 1 });
+    } else if (parameterType === 'vr2') {
+      data = await PechVr2.find({ timestamp: { $gte: startDate, $lte: endDate } }).sort({ timestamp: 1 });
+    } else {
+      return res.status(400).json({ message: 'Неизвестный тип параметра' });
+    }
+
+    res.json({ [parameterType]: data });
   } catch (error) {
-    res.status(500).json({ message: 'Ошибка получения данных' });
+    console.error('Ошибка получения данных:', error);
+    res.status(500).json({ message: 'Ошибка получения данных', error: error.message });
   }
 });
 

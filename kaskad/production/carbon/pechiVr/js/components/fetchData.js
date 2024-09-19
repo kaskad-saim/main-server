@@ -1,20 +1,16 @@
-import { temperData } from './data.js'
-;
-export async function fetchData() {
+export async function fetchData(parameterType, start = null, end = null) {
   try {
-    const response = await fetch('http://169.254.0.155:3000/api/parameters');
+    const params = new URLSearchParams();
+    if (start) params.append('start', start.toISOString());
+    if (end) params.append('end', end.toISOString());
+
+    const response = await fetch(`http://169.254.0.155:3000/api/parameters/${parameterType}?${params.toString()}`);
     const data = await response.json();
 
-    // Обработка данных для каждого типа температуры
-    for (const key in temperData) {
-      temperData[key] = data.vr1
-        .filter((item) => item.name === key)
-        .map((item) => ({
-          x: new Date(item.timestamp),
-          y: item.value,
-        }));
-    }
+    // Поскольку сервер возвращает { vr1: data } или { vr2: data }, мы можем получить данные так:
+    return data[parameterType];
   } catch (error) {
     console.error('Ошибка получения данных:', error);
+    throw error;
   }
 }
