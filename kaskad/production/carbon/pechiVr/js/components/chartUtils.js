@@ -19,7 +19,6 @@ export const elements = {
   noDataMessage: document.getElementById('noDataMessage'),
   chartCanvas: document.getElementById('chartCanvas'),
   loadingWrapper: document.getElementById('loadingWrapper'),
-  graphTitle: document.getElementById('graphTitle'),
   singleDate: document.getElementById('singleDate'),
   toggleDataBtn: document.getElementById('toggleDataBtn'),
   resetBtn: document.getElementById('resetBtn'),

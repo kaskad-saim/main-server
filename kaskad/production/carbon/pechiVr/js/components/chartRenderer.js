@@ -1,4 +1,4 @@
-import { showNoDataMessage, hideNoDataMessage, showPreloader, hidePreloader, updateTitle } from './uiUtils.js';
+import { showNoDataMessage, hideNoDataMessage, showPreloader, hidePreloader } from './uiUtils.js';
 import { insertGapsInData, hasNoValidData } from './dataUtils.js';
 import { createCrosshairPlugin, chartAreaBorderPlugin, colors } from './chartUtils.js';
 import { fetchData } from './fetchData.js';
@@ -29,7 +29,8 @@ export async function renderChart(options, elements, isDataVisible) {
       day: '2-digit',
     });
 
-    updateTitle(elements, isArchive && selectedDate ? `${chartTitle} за ${selectedDate}` : chartTitle);
+    // Формируем заголовок графика
+    const fullChartTitle = isArchive && selectedDate ? `${chartTitle} за ${selectedDate}` : chartTitle;
 
     const chartData = {};
     let hasData = false;
@@ -76,8 +77,8 @@ export async function renderChart(options, elements, isDataVisible) {
         },
         options: {
           animation: false,
-          responsive: true, // Добавляем поддержку изменения размера
-          maintainAspectRatio: false, // Позволяет изменять график по ширине и высоте
+          responsive: true, // Поддержка изменения размера
+          maintainAspectRatio: false, // Изменение графика по ширине и высоте
           plugins: {
             tooltip: {
               mode: 'index',
@@ -101,6 +102,21 @@ export async function renderChart(options, elements, isDataVisible) {
                 },
               },
             },
+            title: {
+              // Добавляем плагин заголовка
+              display: true,
+              text: fullChartTitle,
+              color: 'green', // Устанавливаем зеленый цвет заголовка
+              font: {
+                size: 24,
+                weight: 'bold', // Дополнительно: делаем шрифт жирным
+              },
+              padding: {
+                top: 10,
+                bottom: 10, // Уменьшаем нижний отступ для сокращения пространства между заголовком и легендой
+              },
+              align: 'center', // Дополнительно: выравнивание заголовка (можно изменить на 'center' или 'end' при необходимости)
+            },
           },
           scales: {
             x: {
@@ -113,8 +129,11 @@ export async function renderChart(options, elements, isDataVisible) {
                 },
               },
               afterDataLimits: (scale) => {
-                const rightPadding = 30 * 60 * 1000;
-                scale.max += rightPadding;
+                if (!isArchive) {
+                  // Добавляем отступ только для текущих данных
+                  const rightPadding = 30 * 60 * 1000; // 30 минут в миллисекундах
+                  scale.max += rightPadding;
+                }
               },
             },
             y: {
@@ -127,6 +146,15 @@ export async function renderChart(options, elements, isDataVisible) {
                 display: true,
                 text: yAxisConfig.title,
               },
+            },
+          },
+          layout: {
+            // Добавляем настройку макета для дополнительного контроля над отступами (опционально)
+            padding: {
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
             },
           },
         },
@@ -147,6 +175,24 @@ export async function renderChart(options, elements, isDataVisible) {
       chartInstance.options.scales.y.max = yAxisConfig.max;
       chartInstance.options.scales.y.ticks.stepSize = yAxisConfig.stepSize;
       chartInstance.options.scales.y.title.text = yAxisConfig.title;
+
+      // Обновляем заголовок графика
+      chartInstance.options.plugins.title.text = fullChartTitle;
+
+      // Обновляем цвет заголовка на зеленый
+      chartInstance.options.plugins.title.color = 'green';
+
+      // Обновляем отступы заголовка
+      chartInstance.options.plugins.title.padding.bottom = 10; // Уменьшаем отступ
+
+      // Обновляем отступ по оси X при обновлении графика
+      chartInstance.options.scales.x.afterDataLimits = (scale) => {
+        if (!isArchive) {
+          // Добавляем отступ только для текущих данных
+          const rightPadding = 30 * 60 * 1000; // 30 минут в миллисекундах
+          scale.max += rightPadding;
+        }
+      };
 
       chartInstance.update();
     }
