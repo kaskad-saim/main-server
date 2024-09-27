@@ -1302,7 +1302,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dynamic-graph__graph {
+  height: 600px;
   max-height: 600px;
+  cursor: pointer;
 }
 
 .dynamic-graph__btns {
@@ -1318,6 +1320,7 @@ body::-webkit-scrollbar-thumb {
   color: green;
   border: 1px solid green;
   background-color: transparent;
+  cursor: pointer;
   transition: color .3s ease-in-out, background-color .3s ease-in-out;
 }
 
@@ -1416,18 +1419,21 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   font-family: 'Bitter', sans-serif;
   padding: 2px;
-  border: 2px solid #ccc;
+  border: 2px solid green;
   border-radius: 5px;
   font-size: 14px;
   background-color: #f9f9f9;
   color: #333;
   outline: none;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
 }
 
 /* Стиль при наведении */
 .dynamic-graph__date-input:hover {
-  border-color: #777;
-  background-color: #f0f0f0;
+  border-color: green;
+  background-color: #d4d2d2bb;
+  transition: background-color .3s ease-in-out;
 }
 
 /* Стиль при фокусе (когда элемент активен) */
