@@ -20,7 +20,7 @@ export function isToday(date) {
   return date.toDateString() === today.toDateString();
 }
 
-export function insertGapsInData(data, gapThreshold = 5 * 60 * 1000) {
+export function insertGapsInData(data, gapThreshold = 3 * 60 * 1000) {
   const result = [];
 
   for (let i = 0; i < data.length - 1; i++) {

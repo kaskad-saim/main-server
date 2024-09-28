@@ -10,6 +10,7 @@ export async function renderChart(options, elements, isDataVisible) {
   const {
     parameterType,
     labels,
+    units, // Добавляем units в деструктуризацию options
     yAxisConfig,
     chartTitle,
     start,
@@ -98,7 +99,9 @@ export async function renderChart(options, elements, isDataVisible) {
                 label: function (tooltipItem) {
                   const datasetLabel = tooltipItem.dataset.label || '';
                   const value = tooltipItem.parsed.y;
-                  return `${datasetLabel}: ${value} °C`;
+                  const datasetIndex = tooltipItem.datasetIndex;
+                  const unit = units[datasetIndex] || ''; // Получаем соответствующую единицу
+                  return `${datasetLabel}: ${value} ${unit}`;
                 },
               },
             },
@@ -205,6 +208,7 @@ export async function renderChart(options, elements, isDataVisible) {
     destroyChart();
   }
 }
+
 
 // Функция для уничтожения графика
 function destroyChart() {

@@ -15,6 +15,7 @@ function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
     {
       parameterType: 'vr1',
       labels: dataLabels.levels,
+      units: ['мм', '%'], // Первая метка в мм, вторая в %
       yAxisConfig: {
         min: -200,
         max: 200,

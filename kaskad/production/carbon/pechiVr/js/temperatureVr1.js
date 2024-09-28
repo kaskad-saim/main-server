@@ -11,10 +11,11 @@ let isArchiveMode = false;
 
 // Функция для отображения графика
 function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
-  renderChart(
+renderChart(
     {
       parameterType: 'vr1',
       labels: dataLabels.temperatures,
+      units: dataLabels.temperatures.map(() => '°C'), // Все метки имеют единицу °C
       yAxisConfig: {
         min: 0,
         max: 1500,

@@ -15,6 +15,7 @@ function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
     {
       parameterType: 'vr2',
       labels: dataLabels.temperatures,
+      units: dataLabels.temperatures.map(() => '°C'), // Все метки имеют единицу °C
       yAxisConfig: {
         min: 0,
         max: 1500,
