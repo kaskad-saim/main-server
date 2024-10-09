@@ -1314,6 +1314,7 @@ body::-webkit-scrollbar-thumb {
 
 .dynamic-graph__btn {
   margin-right: 10px;
+  height: 27px;
   font-size: 16px;
   line-height: 22px;
   font-weight: 600;
@@ -1407,6 +1408,8 @@ body::-webkit-scrollbar-thumb {
 
 .dynamic-graph__date-div {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -1415,12 +1418,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dynamic-graph__date-input {
+  margin-right: 10px; 
+  height: 27px;
   width: 150px;
   text-align: center;
   font-family: 'Bitter', sans-serif;
   padding: 2px;
-  border: 2px solid green;
-  border-radius: 5px;
+  border: 1px solid green;
   font-size: 14px;
   background-color: #f9f9f9;
   color: #333;
