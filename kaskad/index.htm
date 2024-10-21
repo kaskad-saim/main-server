@@ -99,14 +99,7 @@
 
   <div class="container intro-container">
     <div class="header__background">
-      <div class="box__first-left"></div>
-      <div class="box__second-left"></div>
-      <div class="box__third-left"></div>
-      <div class="box__fourth-left"></div>
-      <div class="box__first-right"></div>
-      <div class="box__second-right"></div>
-      <div class="box__third-right"></div>
-      <div class="box__fourth-right"></div>
+      <div class="lines-end"></div>
     </div>
     <div class="logo">
       <!-- <img src="images/logo.png" alt="img" class="logo-img" /> -->
@@ -378,28 +371,77 @@
         </div>
       </div>
     </div>
-    <div class="logo">
+    <!-- <div class="logo">
       <div class="logo__content">
         <img src="images/logo_sorbent.png" alt="img" class="logo__img" />
         <div class="logo__gif">
           <img class="logo__gif-img" src="pic/EARTH.GIF" alt="img">
-          <!-- <div class="logo__text">🎅</div> -->
         </div>
       </div>
       <div class="content__title">
         <div class="content__display">
-          <!-- <div class="content__temper">
-            <span class="content__temper-naim">На улице: </span>
-            <span class="content__temper-value">
-
-            </span>
-            <span class="content__temper-ed">&#176C</span>
-          </div> -->
           <div class="content__date-time">
             <span class="content__date"></span>
             <span class="content__time"></span>
           </div>
         </div>
+      </div>
+    </div> -->
+
+    <div class="logo-clock">
+      <div class="clock">
+        <div class="numbers">
+          <span style="--i:0"> <b>12</b> </span>
+          <span style="--i:1"> <b>1</b> </span>
+          <span style="--i:2"> <b>2</b> </span>
+          <span style="--i:3"> <b>3</b> </span>
+          <span style="--i:4"> <b>4</b> </span>
+          <span style="--i:5"> <b>5</b> </span>
+          <span style="--i:6"> <b>6</b> </span>
+          <span style="--i:7"> <b>7</b> </span>
+          <span style="--i:8"> <b>8</b> </span>
+          <span style="--i:9"> <b>9</b> </span>
+          <span style="--i:10"> <b>10</b> </span>
+          <span style="--i:11"> <b>11</b> </span>
+          <div class="circle" id="hr"><i></i></div>
+          <div class="circle" id="mn"><i></i></div>
+          <div class="circle" id="sc"><i></i></div>
+        </div>
+      </div>
+      <div class="calendar" id="calendar">
+        <div class="calendar__btns" id="month">
+          <button class="calendar__btn calendar__btn--prev btn-reset" id="prev">
+            <svg viewBox="0 0 22 38" fill="none" aria-hidden="true">
+              <path
+                d="M1.23223 17.2322C0.255922 18.2085 0.255922 19.7915 1.23223 20.7678L17.1421 36.6777C18.1184 37.654 19.7014 37.654 20.6777 36.6777C21.654 35.7014 21.654 34.1184 20.6777 33.1421L6.53553 19L20.6777 4.85786C21.654 3.88155 21.654 2.29864 20.6777 1.32233C19.7014 0.346018 18.1184 0.346018 17.1421 1.32233L1.23223 17.2322ZM7 16.5L3 16.5L3 21.5L7 21.5L7 16.5Z">
+              </path>
+            </svg>
+          </button>
+          <h2 class="calendar__title-year title-reset" id="monthYear"></h2>
+          <button class="calendar__btn calendar__btn--next btn-reset" id="next">
+            <svg viewBox="0 0 22 38" fill="none" aria-hidden="true">
+              <path
+                d="M1.23223 17.2322C0.255922 18.2085 0.255922 19.7915 1.23223 20.7678L17.1421 36.6777C18.1184 37.654 19.7014 37.654 20.6777 36.6777C21.654 35.7014 21.654 34.1184 20.6777 33.1421L6.53553 19L20.6777 4.85786C21.654 3.88155 21.654 2.29864 20.6777 1.32233C19.7014 0.346018 18.1184 0.346018 17.1421 1.32233L1.23223 17.2322ZM7 16.5L3 16.5L3 21.5L7 21.5L7 16.5Z">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <table class="calendar__table" id="calendarTable">
+          <thead>
+            <tr>
+              <th>Пн</th>
+              <th>Вт</th>
+              <th>Ср</th>
+              <th>Чт</th>
+              <th>Пт</th>
+              <th>Сб</th>
+              <th>Вс</th>
+            </tr>
+          </thead>
+          <tbody style="height: 84px;" id="calendarBody">
+
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

@@ -1,54 +1,96 @@
-const updateTime = () => {
-  let spanTime = document.querySelector('.content__time');
-  let date = new Date();
+document.addEventListener('DOMContentLoaded', () => {
+  // clock
+  let hr = document.querySelector('#hr');
+  let mn = document.querySelector('#mn');
+  let sc = document.querySelector('#sc');
 
-  let hours = ('0' + date.getHours()).slice(-2);
-  let minutes = ('0' + date.getMinutes()).slice(-2);
-  let seconds = ('0' + date.getSeconds()).slice(-2);
-  spanTime.innerHTML = hours + ':' + minutes + ':' + seconds;
-};
+  setInterval(() => {
+    let day = new Date();
+    let hh = day.getHours() * 30;
+    let mm = day.getMinutes() * 6;
+    let ss = day.getSeconds() * 6;
 
-const currentDate = () => {
-  let spanDate = document.querySelector('.content__date');
-  let date = new Date();
+    hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+    mn.style.transform = `rotateZ(${mm}deg)`;
+    sc.style.transform = `rotateZ(${ss}deg)`;
+  });
 
-  let day = ('0' + date.getDate()).slice(-2);
-  let month = ('0' + (date.getMonth() + 1)).slice(-2);
-  let year = date.getFullYear();
-  spanDate.innerHTML = day + '.' + month + '.' + year;
-};
+  // calendar
+  const monthYear = document.getElementById('monthYear');
+  const calendarBody = document.getElementById('calendarBody');
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
 
-currentDate();
-setInterval(updateTime, 1000);
+  let currentMonth = new Date().getMonth();
+  let currentYear = new Date().getFullYear();
 
-const temperValue = document.querySelector('.content__temper-value');
-const link = 'http://api.weatherstack.com/current?access_key=677233247a9bc4c4892cc1c4ae46993c';
+  const today = new Date();
+  const todayDate = today.getDate();
+  const todayMonth = today.getMonth();
+  const todayYear = today.getFullYear();
 
-let store = {
-  city: 'Perm',
-  temperature: 0,
-  feelslike: 0,
-};
+  const months = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
 
-const renderComponent = () => {
-  temperValue.innerHTML = `${store.temperature}`;
-};
+  const renderCalendar = (month, year) => {
+    calendarBody.innerHTML = '';
+    const firstDay = new Date(year, month).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-// const fetchData = async () => {
-//   let result = await fetch(`${link}&query=${store.city}`);
-//   let data = await result.json();
+    monthYear.textContent = `${months[month]} ${year}`;
 
-//   let {
-//     current: { feelslike, temperature },
-//   } = data;
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+      const row = document.createElement('tr');
 
-//   store = {
-//     ...store,
-//     feelslike,
-//     temperature,
-//   };
+      for (let j = 0; j < 7; j++) {
+        const cell = document.createElement('td');
+        if (i === 0 && j < (firstDay === 0 ? 6 : firstDay - 1)) {
+          cell.textContent = '';
+        } else if (date > daysInMonth) {
+          break;
+        } else {
+          cell.textContent = date;
+          if (date === todayDate && month === todayMonth && year === todayYear) {
+            cell.classList.add('today'); // Добавляем класс для выделения сегодняшней даты
+          }
+          date++;
+        }
+        row.appendChild(cell);
+      }
+      calendarBody.appendChild(row);
+    }
+  };
 
-//   renderComponent();
-// };
+  prevButton.addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar(currentMonth, currentYear);
+  });
 
-// fetchData();
+  nextButton.addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar(currentMonth, currentYear);
+  });
+
+  renderCalendar(currentMonth, currentYear);
+});
