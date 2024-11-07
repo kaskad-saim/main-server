@@ -26,9 +26,9 @@ function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
       labels: dataLabels.pressures,
       units,
       yAxisConfig: {
-        min: -50,
-        max: 50,
-        stepSize: 10,
+        min: -20,
+        max: 30,
+        stepSize: 5,
         title: 'Давления/разрежения',
       },
       chartTitle: 'График давления/разрежения печи карбонизации №2',

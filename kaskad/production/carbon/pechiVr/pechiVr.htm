@@ -16,24 +16,16 @@
 
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span">Печь Карбонизации №1:</span>
-			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/pechiVr/currentParam-pechVr-1.htm"
-				target="FrD">Текущие
+			<a class="page-sidebar__link" href="http://169.254.0.156:3002/current-pech-vr-1" target="FrD">Текущие
 				параметры </a>
-			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/pechiVr/mnemo-pech-vr-1.htm"
-				target="FrD">Мнемосхема</a>
+			<a class="page-sidebar__link" href="http://169.254.0.156:3002/mnemo-pech-vr-1" target="FrD">Мнемосхема</a>
 		</div>
 
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span">Печь Карбонизации №2:</span>
-			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/pechiVr/currentParam-pechVr-2.htm"
-				target="FrD">Текущие
+			<a class="page-sidebar__link" href="http://169.254.0.156:3002/current-pech-vr-2" target="FrD">Текущие
 				параметры </a>
-			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/pechiVr/mnemo-pech-vr-2.htm"
-				target="FrD">Мнемосхема</a>
+			<a class="page-sidebar__link" href="http://169.254.0.156:3002/mnemo-pech-vr-2" target="FrD">Мнемосхема</a>
 		</div>
 
 		<!-- <div class="page-sidebar__box">
@@ -44,7 +36,7 @@
 		</div> -->
 
 
-		<h2 class="page-sidebar__title title-reset">Архивы графиков</h2>
+		<!-- <h2 class="page-sidebar__title title-reset">Архивы графиков</h2>
 
 		<table class="calendar-sidebar">
 			<caption class="table-header">Выберите дату:</caption>
@@ -104,8 +96,6 @@
 					<select class="tbSelYear" name="tbSelYear">
 						<option value="2023">2023</option>
 						<option value="2024">2024</option>
-						<!-- <option value="2024">2025</option>
-						<option value="2024">2026</option> -->
 					</select>
 				</th>
 			</tr>
@@ -124,9 +114,20 @@
 			<a class="page-sidebar__link pechvr-2-p-js" href="#"> График давления/разряжения </a>
 			<a class="page-sidebar__link pechvr-2-level-js" href="#">Уровень в барабане котла</a>
 			<a class="page-sidebar__link pechvr-2-p-baraban-js" href="#">Давление пара барабане котла</a>
-		</div>
+		</div> -->
 
-		<h2 class="page-sidebar__title title-reset">Динамические графики</h2>
+		<h2 class="page-sidebar__title title-reset">Общие динамические графики.</h2>
+    <div class="page-sidebar__box">
+      <span class="page-sidebar__span">Печи карбонизации:</span>
+      <a class="page-sidebar__link " href="http://169.254.0.156:3002/graph-vr-general-tempers" target="FrD">
+        Графики температур </a>
+      <a class="page-sidebar__link " href="http://169.254.0.156:3002/graph-vr-general-pressure" target="FrD">
+        Графики давления/разрежения </a>
+      <a class="page-sidebar__link " href="http://169.254.0.156:3002/graph-vr-general-level" target="FrD">
+        Уровни в барабане котлов </a>
+    </div>
+
+		<h2 class="page-sidebar__title title-reset">Динамические графики за сутки</h2>
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span">Печь карбонизации №1:</span>
 			<a class="page-sidebar__link pechvr-1-t-js" href="vr1-temper.htm" target="FrD"> График температур </a>

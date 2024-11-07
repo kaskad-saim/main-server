@@ -1,17 +1,15 @@
 import { showNoDataMessage, hideNoDataMessage, showPreloader, hidePreloader } from './uiUtils.js';
 import { insertGapsInData, hasNoValidData } from './dataUtils.js';
 import { createCrosshairPlugin, chartAreaBorderPlugin, colors } from './chartUtils.js';
-import { fetchData } from './fetchData.js';
-import {labelMapping} from './data.js'
+// import { fetchData } from './fetchData.js';
 
 let chartInstance = null;
 
 // Функция для рендеринга графика
-export async function renderChart(options, elements, isDataVisible) {
+export async function renderChartCombined(options, elements, isDataVisible, combinedData) {
   const {
-    parameterType,
     labels,
-    units, // Добавляем units в деструктуризацию options
+    units,
     yAxisConfig,
     chartTitle,
     start,
@@ -23,8 +21,6 @@ export async function renderChart(options, elements, isDataVisible) {
   try {
     if (!isAutoUpdate) showPreloader(elements);
 
-    const data = await fetchData(parameterType, start, end);
-
     const selectedDate = start.toLocaleDateString('ru-RU', {
       year: 'numeric',
       month: '2-digit',
@@ -34,27 +30,20 @@ export async function renderChart(options, elements, isDataVisible) {
     // Формируем заголовок графика
     const fullChartTitle = isArchive && selectedDate ? `${chartTitle} за ${selectedDate}` : chartTitle;
 
+    // Обрабатываем объединенные данные
     const chartData = {};
-    let hasData = false;
-
     labels.forEach((label) => {
-      const mappedLabel = labelMapping[label] || label; // Используем пользовательское название или оригинальное
-      const dataset = data
-        .filter((item) => item.name === label)
+      const dataset = combinedData
+        .filter((item) => item.label === label)
         .map((item) => ({
           x: new Date(item.timestamp),
           y: typeof item.value === 'number' ? item.value : null,
         }));
-
-      const datasetWithGaps = insertGapsInData(dataset);
-      chartData[mappedLabel] = datasetWithGaps; // Применяем пользовательское название здесь
-
-      if (!hasNoValidData(datasetWithGaps)) {
-        hasData = true;
-      }
+      chartData[label] = insertGapsInData(dataset);
     });
 
-
+    // Проверка на наличие данных
+    const hasData = Object.values(chartData).some((dataset) => !hasNoValidData(dataset));
     if (!hasData) {
       if (!isAutoUpdate) hidePreloader(elements);
       showNoDataMessage(elements, chartInstance);
@@ -81,8 +70,8 @@ export async function renderChart(options, elements, isDataVisible) {
         },
         options: {
           animation: false,
-          responsive: true, // Поддержка изменения размера
-          maintainAspectRatio: false, // Изменение графика по ширине и высоте
+          responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             tooltip: {
               mode: 'index',
@@ -100,29 +89,21 @@ export async function renderChart(options, elements, isDataVisible) {
                   });
                 },
                 label: function (tooltipItem) {
-                  const datasetLabel = labelMapping[tooltipItem.dataset.label] || tooltipItem.dataset.label; // Подставляем пользовательское название
+                  const datasetLabel = tooltipItem.dataset.label || '';
                   const value = tooltipItem.parsed.y;
                   const datasetIndex = tooltipItem.datasetIndex;
-                  const unit = units[datasetIndex] || '';
+                  const unit = units[datasetIndex] || ''; // Получаем соответствующую единицу
                   return `${datasetLabel}: ${value} ${unit}`;
                 },
-
               },
             },
             title: {
-              // Добавляем плагин заголовка
               display: true,
               text: fullChartTitle,
-              color: 'green', // Устанавливаем зеленый цвет заголовка
-              font: {
-                size: 24,
-                weight: 'bold', // Дополнительно: делаем шрифт жирным
-              },
-              padding: {
-                top: 10,
-                bottom: 10, // Уменьшаем нижний отступ для сокращения пространства между заголовком и легендой
-              },
-              align: 'center', // Выравнивание заголовка
+              color: 'green',
+              font: { size: 24, weight: 'bold' },
+              padding: { top: 10, bottom: 10 },
+              align: 'center',
             },
           },
           scales: {
@@ -131,14 +112,11 @@ export async function renderChart(options, elements, isDataVisible) {
               time: {
                 unit: 'hour',
                 tooltipFormat: 'HH:mm',
-                displayFormats: {
-                  hour: 'HH:mm',
-                },
+                displayFormats: { hour: 'HH:mm' },
               },
               afterDataLimits: (scale) => {
                 if (!isArchive) {
-                  // Добавляем отступ только для текущих данных
-                  const rightPadding = 30 * 60 * 1000; // 30 минут в миллисекундах
+                  const rightPadding = 30 * 60 * 1000; // 30 минут
                   scale.max += rightPadding;
                 }
               },
@@ -146,29 +124,14 @@ export async function renderChart(options, elements, isDataVisible) {
             y: {
               min: yAxisConfig.min,
               max: yAxisConfig.max,
-              ticks: {
-                stepSize: yAxisConfig.stepSize,
-              },
-              title: {
-                display: true,
-                text: yAxisConfig.title,
-              },
-            },
-          },
-          layout: {
-            // Настройка макета для дополнительного контроля над отступами (опционально)
-            padding: {
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
+              ticks: { stepSize: yAxisConfig.stepSize },
+              title: { display: true, text: yAxisConfig.title },
             },
           },
         },
         plugins: [createCrosshairPlugin(), chartAreaBorderPlugin()],
       });
 
-      // Устанавливаем начальное состояние видимости данных
       toggleChartData(isDataVisible);
     } else {
       Object.keys(chartData).forEach((key) => {
@@ -177,30 +140,6 @@ export async function renderChart(options, elements, isDataVisible) {
           dataset.data = chartData[key];
         }
       });
-
-      chartInstance.options.scales.y.min = yAxisConfig.min;
-      chartInstance.options.scales.y.max = yAxisConfig.max;
-      chartInstance.options.scales.y.ticks.stepSize = yAxisConfig.stepSize;
-      chartInstance.options.scales.y.title.text = yAxisConfig.title;
-
-      // Обновляем заголовок графика
-      chartInstance.options.plugins.title.text = fullChartTitle;
-
-      // Обновляем цвет заголовка на зеленый
-      chartInstance.options.plugins.title.color = 'green';
-
-      // Обновляем отступы заголовка
-      chartInstance.options.plugins.title.padding.bottom = 10; // Уменьшаем отступ
-
-      // Обновляем отступ по оси X при обновлении графика
-      chartInstance.options.scales.x.afterDataLimits = (scale) => {
-        if (!isArchive) {
-          // Добавляем отступ только для текущих данных
-          const rightPadding = 30 * 60 * 1000; // 30 минут в миллисекундах
-          scale.max += rightPadding;
-        }
-      };
-
       chartInstance.update();
     }
 
@@ -212,6 +151,7 @@ export async function renderChart(options, elements, isDataVisible) {
     destroyChart();
   }
 }
+
 
 // Функция для уничтожения графика
 function destroyChart() {

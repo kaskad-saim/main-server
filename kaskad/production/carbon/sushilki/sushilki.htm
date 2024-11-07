@@ -17,28 +17,28 @@
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span">Сушилка №1:</span>
 			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/sushilki/currentParam-sushilka1.htm"
+				href="http://169.254.0.156:3002/currentParam-sushilka1"
 				target="FrD">Текущие
 				параметры </a>
 			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/sushilki/mnemo-sushilka1.htm"
+				href="http://169.254.0.156:3002/mnemo-sushilka1"
 				target="FrD">Мнемосхема</a>
 		</div>
 
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span">Сушилка №2:</span>
 			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/sushilki/currentParam-sushilka2.htm"
+				href="http://169.254.0.156:3002/currentParam-sushilka2"
 				target="FrD">Текущие
 				параметры </a>
 			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/sushilki/mnemo-sushilka2.htm"
+				href="http://169.254.0.156:3002/mnemo-sushilka2"
 				target="FrD">Мнемосхема</a>
 		</div>
 
 
 
-		<table class="calendar-sidebar">
+		<!-- <table class="calendar-sidebar">
 			<caption class="table-header">Выберите дату:</caption>
 			<tr>
 				<th scope="col">
@@ -96,13 +96,13 @@
 					<select class="tbSelYear" name="tbSelYear">
 						<option value="2023">2023</option>
 						<option value="2024">2024</option>
-						<!-- <option value="2024">2025</option>
-						<option value="2024">2026</option> -->
+						<option value="2024">2025</option>
+						<option value="2024">2026</option>
 					</select>
 				</th>
 			</tr>
-		</table>
-		<div class="page-sidebar__box">
+		</table> -->
+		<!-- <div class="page-sidebar__box">
 			<span class="page-sidebar__span">Сушилка №1:</span>
 			<a class="page-sidebar__link sushilka-1-t-js" href="#"> График температур </a>
 			<a class="page-sidebar__link sushilka-1-p-js" href="#"> График давления/разряжения </a>
@@ -112,6 +112,18 @@
 			<span class="page-sidebar__span">Сушилка №2:</span>
 			<a class="page-sidebar__link sushilka-2-t-js" href="#"> График температур </a>
 			<a class="page-sidebar__link sushilka-2-p-js" href="#"> График давления/разряжения </a>
+		</div> -->
+
+		<h2 class="page-sidebar__title title-reset">Динамические графики за сутки</h2>
+		<div class="page-sidebar__box">
+			<span class="page-sidebar__span">Сушилка №1:</span>
+			<a class="page-sidebar__link pechvr-1-t-js" href="sushilka1-temp.htm" target="FrD"> График температур </a>
+			<a class="page-sidebar__link pechvr-1-t-js" href="sushilka1-davl.htm" target="FrD"> График давления/разрежения </a>
+		</div>
+		<div class="page-sidebar__box">
+			<span class="page-sidebar__span">Сушилка №2:</span>
+			<a class="page-sidebar__link pechvr-1-t-js" href="sushilka2-temp.htm" target="FrD"> График температур </a>
+			<a class="page-sidebar__link pechvr-1-t-js" href="sushilka2-davl.htm" target="FrD"> График давления/разрежения </a>
 		</div>
 
 

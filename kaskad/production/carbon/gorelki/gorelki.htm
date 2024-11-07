@@ -16,13 +16,13 @@
 
 		<div class="page-sidebar__box">
 			<a class="page-sidebar__link"
-				href="http://Techsite4/kaskad/Web_Clnt.dll/ShowPage?production/carbon/gorelki/currentParam-gorelki.htm"
+				href="http://169.254.0.156:3002/currentParam-gorelki"
 				target="FrD">Текущие
 				параметры </a>
 		</div>
 
 
-		<table class="calendar-sidebar">
+		<!-- <table class="calendar-sidebar">
 			<caption class="table-header">Выберите дату:</caption>
 			<tr>
 				<th scope="col">
@@ -80,8 +80,8 @@
 					<select class="tbSelYear" name="tbSelYear" onchange="SelectDate()">
 						<option value="2023">2023</option>
 						<option value="2024">2024</option>
-						<!-- <option value="2024">2025</option>
-						<option value="2024">2026</option> -->
+						<option value="2024">2025</option>
+						<option value="2024">2026</option>
 					</select>
 				</th>
 			</tr>
@@ -90,13 +90,22 @@
 			<span class="page-sidebar__span">Горелки:</span>
 			<a class="page-sidebar__link sushilka-gorelki-js" href="#"> График горелок Сушилки </a>
 			<a class="page-sidebar__link pechvr-gorelki-js" href="#"> График горелок Карбонизации </a>
+		</div> -->
+
+		<h2 class="page-sidebar__title title-reset">Динамические графики за сутки</h2>
+		<div class="page-sidebar__box">
+			<span class="page-sidebar__span">Горелки:</span>
+			<a class="page-sidebar__link pechvr-1-t-js" href="sushilka-gorelki.htm" target="FrD"> График горелок Сушилки </a>
+			<a class="page-sidebar__link pechvr-1-t-js" href="vr-gorelki.htm" target="FrD"> График горелок Карбонизации </a>
 		</div>
 
-		<div class="page-sidebar__box">
+
+
+		<!-- <div class="page-sidebar__box">
 			<span class="page-sidebar__span">Отчеты за выбранный период:</span>
 			<a class="page-sidebar__link energy-reports-gorelki-l-day-js" href="#">Суточный отчет:</a>
 			<a class="page-sidebar__link energy-reports-gorelki-m-js" href="#">Месячный отчет: </a>
-		</div>
+		</div> -->
 
 		<div class="page-sidebar__box">
 			<span class="page-sidebar__span page-sidebar__logo">АО сорбент &copy; 2024</span>

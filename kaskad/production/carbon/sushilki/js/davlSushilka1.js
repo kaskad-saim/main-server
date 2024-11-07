@@ -1,4 +1,3 @@
-// temperatureVr1.js
 import { renderChart, toggleChartData, resetChart } from './components/chartRenderer.js';
 import { getLast24HoursRange, getSingleDateRange, isToday } from './components/dataUtils.js';
 import { dataLabels } from './components/data.js';
@@ -11,27 +10,18 @@ let isArchiveMode = false;
 
 // Функция для отображения графика
 function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
-  const units = dataLabels.pressures.map((label) => {
-    if (label.includes('Давление')) {
-      return 'кгс/см2';
-    } else if (label.includes('Разрежение')) {
-      return 'кгс/м2';
-    }
-    return '';
-  });
-
-  renderChart(
+renderChart(
     {
-      parameterType: 'vr1',
+      parameterType: 'sushilka1',
       labels: dataLabels.pressures,
-      units,
+      units: dataLabels.pressures.map(() => 'кгс/м2'), // Все метки имеют единицу °C
       yAxisConfig: {
         min: -20,
-        max: 30,
-        stepSize: 5,
-        title: 'Давления/разрежения',
+        max: 10,
+        stepSize: 1,
+        title: 'Давление / разрежение',
       },
-      chartTitle: 'График давления/разрежения печи карбонизации №1',
+      chartTitle: 'График давления / разрежения сушилки №1',
       start,
       end,
       isArchive,

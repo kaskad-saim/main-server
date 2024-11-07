@@ -2,7 +2,6 @@ import { showNoDataMessage, hideNoDataMessage, showPreloader, hidePreloader } fr
 import { insertGapsInData, hasNoValidData } from './dataUtils.js';
 import { createCrosshairPlugin, chartAreaBorderPlugin, colors } from './chartUtils.js';
 import { fetchData } from './fetchData.js';
-import {labelMapping} from './data.js'
 
 let chartInstance = null;
 
@@ -38,22 +37,20 @@ export async function renderChart(options, elements, isDataVisible) {
     let hasData = false;
 
     labels.forEach((label) => {
-      const mappedLabel = labelMapping[label] || label; // Используем пользовательское название или оригинальное
       const dataset = data
         .filter((item) => item.name === label)
         .map((item) => ({
           x: new Date(item.timestamp),
-          y: typeof item.value === 'number' ? item.value : null,
+          y: typeof item.value === 'number' ? item.value : null, // Проверка на число
         }));
 
       const datasetWithGaps = insertGapsInData(dataset);
-      chartData[mappedLabel] = datasetWithGaps; // Применяем пользовательское название здесь
+      chartData[label] = datasetWithGaps;
 
       if (!hasNoValidData(datasetWithGaps)) {
         hasData = true;
       }
     });
-
 
     if (!hasData) {
       if (!isAutoUpdate) hidePreloader(elements);
@@ -100,13 +97,12 @@ export async function renderChart(options, elements, isDataVisible) {
                   });
                 },
                 label: function (tooltipItem) {
-                  const datasetLabel = labelMapping[tooltipItem.dataset.label] || tooltipItem.dataset.label; // Подставляем пользовательское название
+                  const datasetLabel = tooltipItem.dataset.label || '';
                   const value = tooltipItem.parsed.y;
                   const datasetIndex = tooltipItem.datasetIndex;
-                  const unit = units[datasetIndex] || '';
+                  const unit = units[datasetIndex] || ''; // Получаем соответствующую единицу
                   return `${datasetLabel}: ${value} ${unit}`;
                 },
-
               },
             },
             title: {

@@ -1,44 +1,49 @@
-// temperatureVr1.js
-import { renderChart, toggleChartData, resetChart } from './components/chartRenderer.js';
+import { renderChartCombined, toggleChartData, resetChart } from './components/chartRenderer.js';
 import { getLast24HoursRange, getSingleDateRange, isToday } from './components/dataUtils.js';
-import { dataLabels } from './components/data.js';
 import { elements } from './components/chartUtils.js';
 import { setupInactivityTimer } from './components/timer.js';
+import { fetchData } from './components/fetchData.js';
 
 // Состояния
 let isDataVisible = true;
 let isArchiveMode = false;
 
 // Функция для отображения графика
-function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
-  const units = dataLabels.pressures.map((label) => {
-    if (label.includes('Давление')) {
-      return 'кгс/см2';
-    } else if (label.includes('Разрежение')) {
-      return 'кгс/м2';
-    }
-    return '';
-  });
+async function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
+  // Извлекаем данные для обоих горелок
+  const dataVr1 = await fetchData('vr1', start, end); // Данные для горелки №1
+  const dataVr2 = await fetchData('vr2', start, end); // Данные для горелки №2
 
-  renderChart(
+  // Объединяем данные для графика
+  const combinedData = [
+    ...dataVr1
+      .filter(item => item.name === 'Мощность горелки №1')
+      .map(item => ({ ...item, label: 'Мощность горелки №1' })),
+    ...dataVr2
+      .filter(item => item.name === 'Мощность горелки №2')
+      .map(item => ({ ...item, label: 'Мощность горелки №2' })),
+  ];
+
+  renderChartCombined(
     {
-      parameterType: 'vr1',
-      labels: dataLabels.pressures,
-      units,
+      parameterType: ['vr1', 'vr2'], // Указываем оба типа данных
+      labels: ['Мощность горелки №1', 'Мощность горелки №2'], // Метки для горелок
+      units: ['%', '%'],
       yAxisConfig: {
-        min: -20,
-        max: 30,
+        min: 0,
+        max: 100,
         stepSize: 5,
-        title: 'Давления/разрежения',
+        title: 'Мощность (%)',
       },
-      chartTitle: 'График давления/разрежения печи карбонизации №1',
+      chartTitle: 'График мощности горелок (ПК)',
       start,
       end,
       isArchive,
       isAutoUpdate,
     },
     elements,
-    isDataVisible
+    isDataVisible,
+    combinedData // Передаем объединенные данные в renderChart
   );
 }
 
