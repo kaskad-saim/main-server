@@ -11,18 +11,18 @@ let isArchiveMode = false;
 
 // Функция для отображения графика
 function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
-  renderChart(
+renderChart(
     {
-      parameterType: 'vr2',
-      labels: dataLabels.levels,
-      units: ['мм', '%'], // Первая метка в мм, вторая в %
+      parameterType: 'reactor',
+      labels: dataLabels.temperatures,
+      units: dataLabels.temperatures.map(() => '°C'), // Все метки имеют единицу °C
       yAxisConfig: {
-        min: -200,
-        max: 200,
-        stepSize: 10,
-        title: 'Уровень (мм)',
+        min: 0,
+        max: 100,
+        stepSize: 5,
+        title: 'Температура (°C)',
       },
-      chartTitle: 'График уровня в барабане котла ПК №2',
+      chartTitle: 'График температур в реакторах к296',
       start,
       end,
       isArchive,

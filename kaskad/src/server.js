@@ -8,7 +8,6 @@ const PORT = 3000;
 
 // Подключение к MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/carbon');
-
 mongoose.connection.on('connected', () => console.log('Подключено к MongoDB'));
 mongoose.connection.on('error', (err) => console.error('Ошибка подключения к MongoDB:', err));
 
@@ -22,7 +21,11 @@ const parameterSchema = new mongoose.Schema({
 const PechVr1 = mongoose.model('PechVr1', parameterSchema);
 const PechVr2 = mongoose.model('PechVr2', parameterSchema);
 const Sushilka1 = mongoose.model('Sushilka1', parameterSchema);
-const Sushilka2 = mongoose.model('Sushilka2', parameterSchema); // Модель для Сушилки 2
+const Sushilka2 = mongoose.model('Sushilka2', parameterSchema);
+const SmolReactor = mongoose.model('SmolReactorK296', parameterSchema);
+const Melniza1 = mongoose.model('Melniza1', parameterSchema);
+const Melniza2 = mongoose.model('Melniza2', parameterSchema);
+const Melniza10b = mongoose.model ('Melniza10b', parameterSchema);
 
 // Middleware
 app.use(cors());
@@ -35,8 +38,8 @@ const parseLastUpdated = (str) => {
   return new Date(year, month - 1, day, hours, minutes, seconds);
 };
 
-const addCategoryPrefix = (category, name, isSushilka = false) => {
-  if (isSushilka) return name; // Без префиксов для Сушилки 1 и Сушилки 2
+const addCategoryPrefix = (category, name, noPrefix = false) => {
+  if (noPrefix) return name; // Без префиксов, если флаг установлен
   return ({
     temperatures: 'Температура ',
     pressures: 'Давление ',
@@ -45,38 +48,45 @@ const addCategoryPrefix = (category, name, isSushilka = false) => {
   }[category] || '') + name;
 };
 
-const extractParameters = (data, timestamp, isSushilka = false) =>
-  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka'].flatMap((category) =>
-    Object.entries(data[category] || {}).map(([name, obj]) => ({
-      name: addCategoryPrefix(category, name, isSushilka),
-      value: typeof obj === 'boolean' ? (obj ? 1 : 0) : parseFloat(obj?.value ?? obj),
-      timestamp,
-    })).filter(({ value }) => value !== undefined && value !== null)
+const extractParameters = (data, timestamp, noPrefix = false) =>
+  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka', 'data'].flatMap((category) =>
+    Object.entries(data[category] || {}).map(([name, obj]) => {
+      const value = typeof obj === 'boolean' ? (obj ? 1 : 0) : parseFloat(obj?.value ?? obj);
+      return !isNaN(value) ? {
+        name: addCategoryPrefix(category, name, noPrefix),
+        value,
+        timestamp,
+      } : null;
+    }).filter(item => item) // Удаляем null из массива
   );
 
-
-const fetchData = async () => {
-  try {
+  const fetchData = async () => {
     const endpoints = [
       { url: 'http://169.254.0.156:3002/api/vr1-data', model: PechVr1 },
       { url: 'http://169.254.0.156:3002/api/vr2-data', model: PechVr2 },
-      { url: 'http://169.254.0.156:3002/api/sushilka1-data', model: Sushilka1, isSushilka: true },
-      { url: 'http://169.254.0.156:3002/api/sushilka2-data', model: Sushilka2, isSushilka: true }, // Новый API для Сушилки 2
+      { url: 'http://169.254.0.156:3002/api/sushilka1-data', model: Sushilka1, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/sushilka2-data', model: Sushilka2, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/reactorK296-data', model: SmolReactor, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/mill1-data', model: Melniza1, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/mill2-data', model: Melniza2, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/mill10b-data', model: Melniza10b, noPrefix: true },
     ];
 
-    for (const { url, model, isSushilka } of endpoints) {
-      const { data } = await axios.get(url);
-      const timestamp = parseLastUpdated(data.lastUpdated);
-      const parameters = extractParameters(data, timestamp, isSushilka);
+    for (const { url, model, noPrefix } of endpoints) {
+      try {
+        const { data } = await axios.get(url);
+        const timestamp = parseLastUpdated(data.lastUpdated);
+        const parameters = extractParameters(data, timestamp, noPrefix);
 
-      if (parameters.length > 0) {
-        await model.insertMany(parameters);
+        if (parameters.length > 0) {
+          await model.insertMany(parameters);
+        }
+      } catch (error) {
+        console.error(`Ошибка при извлечении данных с ${url}:`, error.message);
       }
     }
-  } catch (error) {
-    console.error('Ошибка при извлечении данных:', error.message);
-  }
-};
+  };
+
 
 // Запуск fetchData каждые 60 секунд
 setInterval(fetchData, 60000);
@@ -89,7 +99,12 @@ app.get('/api/parameters/:parameterType', async (req, res) => {
     const Model = parameterType === 'vr1' ? PechVr1
       : parameterType === 'vr2' ? PechVr2
       : parameterType === 'sushilka1' ? Sushilka1
-      : Sushilka2;
+      : parameterType === 'sushilka2' ? Sushilka2
+      : parameterType === 'reactor' ? SmolReactor
+      : parameterType === 'melniza1' ? Melniza1
+      : parameterType === 'melniza2' ? Melniza2
+      : parameterType === 'melniza10b' ? Melniza10b
+      : null;
 
     if (!Model) return res.status(400).json({ message: 'Неизвестный тип параметра' });
 

@@ -1,4 +1,3 @@
-// temperatureVr1.js
 import { renderChart, toggleChartData, resetChart } from './components/chartRenderer.js';
 import { getLast24HoursRange, getSingleDateRange, isToday } from './components/dataUtils.js';
 import { dataLabels } from './components/data.js';
@@ -13,16 +12,16 @@ let isArchiveMode = false;
 function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
   renderChart(
     {
-      parameterType: 'vr2',
+      parameterType: 'reactor',
       labels: dataLabels.levels,
-      units: ['мм', '%'], // Первая метка в мм, вторая в %
+      units: dataLabels.levels.map(() => 'мм'),
       yAxisConfig: {
-        min: -200,
-        max: 200,
-        stepSize: 10,
-        title: 'Уровень (мм)',
+        min: 0,
+        max: 2500,
+        stepSize: 100,
+        title: 'Уровень смолы (мм)',
       },
-      chartTitle: 'График уровня в барабане котла ПК №2',
+      chartTitle: 'График уровня смолы в реакторах к296',
       start,
       end,
       isArchive,
