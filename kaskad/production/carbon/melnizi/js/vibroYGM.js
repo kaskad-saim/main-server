@@ -21,7 +21,7 @@ renderChart(
         stepSize: 1,
         title: 'Вибрация (мм/с)',
       },
-      chartTitle: 'График вибрации в Мельнице YGM9517',
+      chartTitle: 'График вибрации в Мельнице YGM-9517',
       start,
       end,
       isArchive,

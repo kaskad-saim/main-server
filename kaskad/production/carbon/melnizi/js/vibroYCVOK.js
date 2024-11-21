@@ -21,7 +21,7 @@ renderChart(
         stepSize: 1,
         title: 'Вибрация (мм/с)',
       },
-      chartTitle: 'График вибрации в Мельнице YCVOK130',
+      chartTitle: 'График вибрации в Мельнице YCVOK-130',
       start,
       end,
       isArchive,
