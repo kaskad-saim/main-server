@@ -26,6 +26,8 @@ const SmolReactor = mongoose.model('SmolReactorK296', parameterSchema);
 const Melniza1 = mongoose.model('Melniza1', parameterSchema);
 const Melniza2 = mongoose.model('Melniza2', parameterSchema);
 const Melniza10b = mongoose.model ('Melniza10b', parameterSchema);
+const PechMpa2 = mongoose.model('PechMpa2', parameterSchema);
+const PechMpa3 = mongoose.model('PechMpa3', parameterSchema);
 
 // Middleware
 app.use(cors());
@@ -70,6 +72,8 @@ const extractParameters = (data, timestamp, noPrefix = false) =>
       { url: 'http://169.254.0.156:3002/api/mill1-data', model: Melniza1, noPrefix: true },
       { url: 'http://169.254.0.156:3002/api/mill2-data', model: Melniza2, noPrefix: true },
       { url: 'http://169.254.0.156:3002/api/mill10b-data', model: Melniza10b, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/mpa2-data', model: PechMpa2, noPrefix: true },
+      { url: 'http://169.254.0.156:3002/api/mpa3-data', model: PechMpa3, noPrefix: true },
     ];
 
     for (const { url, model, noPrefix } of endpoints) {
@@ -104,6 +108,8 @@ app.get('/api/parameters/:parameterType', async (req, res) => {
       : parameterType === 'melniza1' ? Melniza1
       : parameterType === 'melniza2' ? Melniza2
       : parameterType === 'melniza10b' ? Melniza10b
+      : parameterType === 'mpa2' ? PechMpa2
+      : parameterType === 'mpa3' ? PechMpa3
       : null;
 
     if (!Model) return res.status(400).json({ message: 'Неизвестный тип параметра' });
