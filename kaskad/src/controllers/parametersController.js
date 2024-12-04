@@ -10,6 +10,7 @@ import {
   Melniza10b,
   PechMpa2,
   PechMpa3,
+  UzliUchetaCarbon,
 } from '../models/parameter.js';
 
 export const getParameters = async (req, res) => {
@@ -29,6 +30,7 @@ export const getParameters = async (req, res) => {
       melniza10b: Melniza10b,
       mpa2: PechMpa2,
       mpa3: PechMpa3,
+      uzliUcheta: UzliUchetaCarbon
     };
 
     const Model = modelMap[parameterType];

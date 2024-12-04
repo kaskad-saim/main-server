@@ -18,3 +18,4 @@ export const Melniza2 = mongoose.model('Melniza2', parameterSchema);
 export const Melniza10b = mongoose.model('Melniza10b', parameterSchema);
 export const PechMpa2 = mongoose.model('PechMpa2', parameterSchema);
 export const PechMpa3 = mongoose.model('PechMpa3', parameterSchema);
+export const UzliUchetaCarbon = mongoose.model ('UzliUchetaCarbon', parameterSchema);

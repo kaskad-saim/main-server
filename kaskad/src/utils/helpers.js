@@ -1,5 +1,3 @@
-// utils/helpers.js
-
 export const parseLastUpdated = (str) => {
   const [date, time] = str.split(', ');
   const [day, month, year] = date.split('.').map(Number);
