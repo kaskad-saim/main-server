@@ -11,6 +11,8 @@ import {
   PechMpa2,
   PechMpa3,
   UzliUchetaCarbon,
+  NotisVr1,
+  NotisVr2
 } from '../models/parameter.js';
 
 export const getParameters = async (req, res) => {
@@ -22,6 +24,8 @@ export const getParameters = async (req, res) => {
     const modelMap = {
       vr1: PechVr1,
       vr2: PechVr2,
+      notis1: NotisVr1,
+      notis2: NotisVr2,
       sushilka1: Sushilka1,
       sushilka2: Sushilka2,
       reactor: SmolReactor,
