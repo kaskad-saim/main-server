@@ -17,7 +17,7 @@ renderChart(
       units: dataLabelsNotis.notis1.map(() => 'кг/ч'),
       yAxisConfig: {
         min: 0,
-        max: 1500,
+        max: 1000,
         stepSize: 100,
         title: 'Загрузка (кг/ч)',
       },
