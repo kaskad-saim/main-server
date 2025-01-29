@@ -71,109 +71,109 @@ const reportMonthFunc = (path) => {
 };
 
 //uroven v barabane kotla and davl par
-const techsite6Graph = 'Techsite6/kaskad/graphics/kotelnaya';
-const WaterLevelKotel1 = document.querySelector('.kotel1-uroven-js');
-const WaterLevelKotel2 = document.querySelector('.kotel2-uroven-js');
-const WaterLevelKotel3 = document.querySelector('.kotel3-uroven-js');
-const davlParKotel1 = document.querySelector('.kotel1-davl-par-js');
-const davlParKotel2 = document.querySelector('.kotel2-davl-par-js');
-const davlParKotel3 = document.querySelector('.kotel3-davl-par-js');
+// const techsite6Graph = 'Techsite6/kaskad/graphics/kotelnaya';
+// const WaterLevelKotel1 = document.querySelector('.kotel1-uroven-js');
+// const WaterLevelKotel2 = document.querySelector('.kotel2-uroven-js');
+// const WaterLevelKotel3 = document.querySelector('.kotel3-uroven-js');
+// const davlParKotel1 = document.querySelector('.kotel1-davl-par-js');
+// const davlParKotel2 = document.querySelector('.kotel2-davl-par-js');
+// const davlParKotel3 = document.querySelector('.kotel3-davl-par-js');
 
-const graphicWaterLevelKotel1 = (e) => {
-  e.preventDefault();
+// const graphicWaterLevelKotel1 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel1/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel1.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel1/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel1.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (WaterLevelKotel1) {
-  WaterLevelKotel1.addEventListener('click', graphicWaterLevelKotel1);
-}
+// if (WaterLevelKotel1) {
+//   WaterLevelKotel1.addEventListener('click', graphicWaterLevelKotel1);
+// }
 
-const graphicWaterLevelKotel2 = (e) => {
-  e.preventDefault();
+// const graphicWaterLevelKotel2 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel2/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel2.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel2/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel2.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (WaterLevelKotel2) {
-  WaterLevelKotel2.addEventListener('click', graphicWaterLevelKotel2);
-}
+// if (WaterLevelKotel2) {
+//   WaterLevelKotel2.addEventListener('click', graphicWaterLevelKotel2);
+// }
 
-const graphicWaterLevelKotel3 = (e) => {
-  e.preventDefault();
+// const graphicWaterLevelKotel3 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel3/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel3.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel3/${SelDate}_${SelMonth}_${SelYear}_WaterLevelKotel3.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (WaterLevelKotel3) {
-  WaterLevelKotel3.addEventListener('click', graphicWaterLevelKotel3);
-}
+// if (WaterLevelKotel3) {
+//   WaterLevelKotel3.addEventListener('click', graphicWaterLevelKotel3);
+// }
 
-const graphicDavlParKotel1 = (e) => {
-  e.preventDefault();
+// const graphicDavlParKotel1 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel1/${SelDate}_${SelMonth}_${SelYear}_davlParKotel1.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel1/${SelDate}_${SelMonth}_${SelYear}_davlParKotel1.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (davlParKotel1) {
-  davlParKotel1.addEventListener('click', graphicDavlParKotel1);
-}
+// if (davlParKotel1) {
+//   davlParKotel1.addEventListener('click', graphicDavlParKotel1);
+// }
 
-const graphicDavlParKotel2 = (e) => {
-  e.preventDefault();
+// const graphicDavlParKotel2 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel2/${SelDate}_${SelMonth}_${SelYear}_davlParKotel2.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel2/${SelDate}_${SelMonth}_${SelYear}_davlParKotel2.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (davlParKotel2) {
-  davlParKotel2.addEventListener('click', graphicDavlParKotel2);
-}
+// if (davlParKotel2) {
+//   davlParKotel2.addEventListener('click', graphicDavlParKotel2);
+// }
 
-const graphicDavlParKotel3 = (e) => {
-  e.preventDefault();
+// const graphicDavlParKotel3 = (e) => {
+//   e.preventDefault();
 
-  const SelDate = tbSelDate.value;
-  //if (SelDate<=9) SelDate = "0" + SelDate;
-  const SelMonth = tbSelMonth.value;
-  //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
-  const SelYear = tbSelYear.value;
-  const FileName = `http://${techsite6Graph}/Kotel3/${SelDate}_${SelMonth}_${SelYear}_davlParKotel3.jpg`;
-  parent.FrD.location = FileName;
-};
+//   const SelDate = tbSelDate.value;
+//   //if (SelDate<=9) SelDate = "0" + SelDate;
+//   const SelMonth = tbSelMonth.value;
+//   //if (SelMonth <=9) SelMonth =  "0" + SelMonth;
+//   const SelYear = tbSelYear.value;
+//   const FileName = `http://${techsite6Graph}/Kotel3/${SelDate}_${SelMonth}_${SelYear}_davlParKotel3.jpg`;
+//   parent.FrD.location = FileName;
+// };
 
-if (davlParKotel3) {
-  davlParKotel3.addEventListener('click', graphicDavlParKotel3);
-}
+// if (davlParKotel3) {
+//   davlParKotel3.addEventListener('click', graphicDavlParKotel3);
+// }
 
 //par-kotelnaya
 const parKotelnaya = document.querySelector('.par-kotelnaya-js');

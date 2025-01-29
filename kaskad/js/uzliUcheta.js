@@ -213,7 +213,7 @@ const electricalReportsChoseM = document.querySelector('.electrical-reports-chos
 
 const electricReports_currentM = () => {
   const SelYear = tbSelYear.value;
-  const FileName = 'http://TechSite3/kaskad/Reports/Electric/' + '2024' + '/askue_tomonth.htm';
+  const FileName = 'http://TechSite3/kaskad/Reports/Electric/' + '2025' + '/askue_tomonth.htm';
   parent.FrD.location = FileName;
 };
 
