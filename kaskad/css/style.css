@@ -598,6 +598,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .content__frame {
+  padding-top: 3px;
   /* padding: 5px; */
   width: 100%;
   /* border: 1px solid #ccc; */
