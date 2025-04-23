@@ -22,7 +22,7 @@ function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
         stepSize: 5,
         title: 'Уровень (%)',
       },
-      chartTitle: 'График уровней ПК №1',
+      chartTitle: 'График уровней (%) ПК №1',
       start,
       end,
       isArchive,

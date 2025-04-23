@@ -10,7 +10,6 @@ let isArchiveMode = false;
 
 // Функция для отображения графика
 function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
-
   renderChart(
     {
       parameterType: 'vr2',
@@ -22,7 +21,7 @@ function renderGraphic(start, end, isArchive = false, isAutoUpdate = false) {
         stepSize: 5,
         title: 'Уровень (%)',
       },
-      chartTitle: 'График уровней ПК №2',
+      chartTitle: 'График уровней (%) ПК №2',
       start,
       end,
       isArchive,
