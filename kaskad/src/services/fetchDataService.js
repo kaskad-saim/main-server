@@ -41,6 +41,11 @@ export const fetchData = async () => {
       const timestamp = parseLastUpdated(data.lastUpdated);
       const parameters = extractParameters(data, timestamp, noPrefix);
 
+      // if (url.includes('/vr1-data')) {
+      //   console.log('=== Данные, готовые к вставке в PechVr1 ===');
+      //   console.table(parameters);
+      // }
+
       if (parameters.length > 0) {
         await model.insertMany(parameters);
         // console.log(`Данные успешно сохранены из ${url}`);

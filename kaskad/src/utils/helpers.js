@@ -17,15 +17,45 @@ export const addCategoryPrefix = (category, name, noPrefix = false) => {
 };
 
 export const extractParameters = (data, timestamp, noPrefix = false) =>
-  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka', 'data'].flatMap((category) =>
-    Object.entries(data[category] || {}).map(([name, obj]) => {
-      const value = typeof obj === 'boolean' ? (obj ? 1 : 0) : parseFloat(obj?.value ?? obj);
-      return !isNaN(value)
-        ? {
-            name: addCategoryPrefix(category, name, noPrefix),
-            value,
-            timestamp,
+  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka', 'data']
+    .flatMap((category) =>
+      Object.entries(data[category] || {})
+        .flatMap(([name, obj]) => {
+          const prefixName = addCategoryPrefix(category, name, noPrefix);
+          const params = [];
+
+          if (category === 'levels' && obj != null && typeof obj === 'object') {
+            const val = parseFloat(obj.value);
+            if (!isNaN(val)) {
+              params.push({
+                name: prefixName,
+                value: val,
+                timestamp,
+              });
+            }
+
+            const pct = parseFloat(obj.percent);
+            if (!isNaN(pct)) {
+              params.push({
+                name: `${prefixName} (%)`,
+                value: pct,
+                timestamp,
+              });
+            }
+          } else {
+            const raw = obj;
+            const val = typeof raw === 'boolean'
+              ? (raw ? 1 : 0)
+              : parseFloat(raw?.value ?? raw);
+            if (!isNaN(val)) {
+              params.push({
+                name: prefixName,
+                value: val,
+                timestamp,
+              });
+            }
           }
-        : null;
-    }).filter(item => item) // Удаляем null из массива
-  );
+
+          return params;
+        })
+    );
