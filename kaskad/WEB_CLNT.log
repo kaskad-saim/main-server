@@ -27438,3 +27438,51 @@
 Инициализация завершена...
 
 ==================================
+ 
+Загрузка библиотеки Web_Clnt.dll 05.05.2025 15:40:14
+Имя исполняемого модуля Web-сервера: C:\Program Files (x86)\Kaskad\Sambar\bin\server.exe
+Имя модуля библиотеки: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.DLL
+Имя компьютера : TECHSITE3
+Адрес : TechSite3
+ 
+Начинается инициализация...
+Считываем конфигурацию из файла: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.ini
+Путь к проекту: D:\Project\kaskad.kpr
+Путь к исполняемым файлам SCADA-системы: C:\Program Files (x86)\Kaskad\Bin\
+Успешная загрузка C:\Program Files (x86)\Kaskad\Bin\PasspSel.dll
+Ошибка инициализации библиотеки C:\Program Files (x86)\Kaskad\Bin\DASrvClnt.dll
+Инициализация завершена...
+
+==================================
+ 
+Загрузка библиотеки Web_Clnt.dll 06.05.2025 11:31:14
+Имя исполняемого модуля Web-сервера: C:\Program Files (x86)\Kaskad\Sambar\bin\server.exe
+Имя модуля библиотеки: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.DLL
+Имя компьютера : TECHSITE3
+Адрес : TechSite3
+ 
+Начинается инициализация...
+Считываем конфигурацию из файла: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.ini
+Путь к проекту: D:\Project\kaskad.kpr
+Путь к исполняемым файлам SCADA-системы: C:\Program Files (x86)\Kaskad\Bin\
+Успешная загрузка C:\Program Files (x86)\Kaskad\Bin\PasspSel.dll
+Ошибка инициализации библиотеки C:\Program Files (x86)\Kaskad\Bin\DASrvClnt.dll
+Инициализация завершена...
+
+==================================
+ 
+Загрузка библиотеки Web_Clnt.dll 06.05.2025 11:40:19
+Имя исполняемого модуля Web-сервера: C:\Program Files (x86)\Kaskad\Sambar\bin\server.exe
+Имя модуля библиотеки: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.DLL
+Имя компьютера : TECHSITE3
+Адрес : TechSite3
+ 
+Начинается инициализация...
+Считываем конфигурацию из файла: C:\PROGRAM FILES (X86)\KASKAD\SAMBAR\DOCS\KASKAD\WEB_CLNT.ini
+Путь к проекту: D:\Project\kaskad.kpr
+Путь к исполняемым файлам SCADA-системы: C:\Program Files (x86)\Kaskad\Bin\
+Успешная загрузка C:\Program Files (x86)\Kaskad\Bin\PasspSel.dll
+Успешная загрузка C:\Program Files (x86)\Kaskad\Bin\DASrvClnt.dll
+Инициализация завершена...
+
+==================================
