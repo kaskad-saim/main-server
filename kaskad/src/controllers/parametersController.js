@@ -12,7 +12,8 @@ import {
   PechMpa3,
   UzliUchetaCarbon,
   NotisVr1,
-  NotisVr2
+  NotisVr2,
+  Press3
 } from '../models/parameter.js';
 
 export const getParameters = async (req, res) => {
@@ -29,6 +30,7 @@ export const getParameters = async (req, res) => {
       sushilka1: Sushilka1,
       sushilka2: Sushilka2,
       reactor: SmolReactor,
+      press3: Press3,
       melniza1: Melniza1,
       melniza2: Melniza2,
       melniza10b: Melniza10b,

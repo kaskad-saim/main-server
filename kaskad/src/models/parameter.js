@@ -13,6 +13,7 @@ export const PechVr2 = mongoose.model('PechVr2', parameterSchema);
 export const Sushilka1 = mongoose.model('Sushilka1', parameterSchema);
 export const Sushilka2 = mongoose.model('Sushilka2', parameterSchema);
 export const SmolReactor = mongoose.model('SmolReactorK296', parameterSchema);
+export const Press3 = mongoose.model('Press3', parameterSchema);
 export const Melniza1 = mongoose.model('Melniza1', parameterSchema);
 export const Melniza2 = mongoose.model('Melniza2', parameterSchema);
 export const Melniza10b = mongoose.model('Melniza10b', parameterSchema);

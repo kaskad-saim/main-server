@@ -17,7 +17,7 @@ export const addCategoryPrefix = (category, name, noPrefix = false) => {
 };
 
 export const extractParameters = (data, timestamp, noPrefix = false) =>
-  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka', 'data']
+  ['temperatures', 'pressures', 'vacuums', 'levels', 'im', 'gorelka', 'data', 'termodatData', 'controllerData']
     .flatMap((category) =>
       Object.entries(data[category] || {})
         .flatMap(([name, obj]) => {

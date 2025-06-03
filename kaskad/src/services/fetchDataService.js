@@ -12,7 +12,8 @@ import {
   PechMpa2,
   PechMpa3,
   NotisVr1,
-  NotisVr2
+  NotisVr2,
+  Press3
 } from '../models/parameter.js';
 import { parseLastUpdated, extractParameters } from '../utils/helpers.js';
 
@@ -27,6 +28,7 @@ const endpoints = [
   { url: 'http://169.254.0.156:3002/api/sushilka1-data', model: Sushilka1, noPrefix: true },
   { url: 'http://169.254.0.156:3002/api/sushilka2-data', model: Sushilka2, noPrefix: true },
   { url: 'http://169.254.0.156:3002/api/reactorK296-data', model: SmolReactor, noPrefix: true },
+  { url: 'http://169.254.0.156:3002/api/press3-data', model: Press3, noPrefix: true },
   { url: 'http://169.254.0.156:3002/api/mill1-data', model: Melniza1, noPrefix: true },
   { url: 'http://169.254.0.156:3002/api/mill2-data', model: Melniza2, noPrefix: true },
   { url: 'http://169.254.0.156:3002/api/mill10b-data', model: Melniza10b, noPrefix: true },
@@ -41,6 +43,7 @@ export const fetchData = async () => {
       const timestamp = parseLastUpdated(data.lastUpdated);
       const parameters = extractParameters(data, timestamp, noPrefix);
 
+      // console.log(data);
       // if (url.includes('/vr1-data')) {
       //   console.log('=== Данные, готовые к вставке в PechVr1 ===');
       //   console.table(parameters);
